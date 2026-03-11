@@ -1,0 +1,259 @@
+@use 'sass:math';
+
+
+.services {
+    padding-top: 120px;
+}
+
+.servicesHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.servicesText {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 120%;
+    color: var(--seryy);
+}
+
+.servicesItems {
+    margin: 90px 0 140px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.servicesItem {
+    cursor: pointer;
+    min-height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms all ease;
+
+    /* Важно для позиционирования псевдоэлементов */
+    position: relative;
+    z-index: 1;
+}
+
+.servicesItem:not(:last-child) {
+    border-bottom: 1px solid var(--svetlyy);
+}
+
+.servicesItemBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Базовые стили для всех световых областей */
+
+.servicesItem .lightSpot1,
+.servicesItem .lightSpot2 {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    /* Чтобы не мешать кликам */
+    opacity: 0;
+    transition: opacity 500ms ease;
+    z-index: -1;
+}
+
+
+
+/* Дополнительная световая область сверху справа */
+.lightSpot1 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at 80% 20%,
+            var(--siniy) 0%,
+            rgba(8, 114, 243, 0.4) 50%,
+            transparent 90%);
+    filter: blur(60px);
+    top: -50px;
+    right: -50px;
+}
+
+/* Световая область по центру для мягкости */
+.lightSpot2 {
+    filter: blur(50px);
+    background: radial-gradient(circle, #0169e9 0%, #ffffff00 100%);
+    width: 500px;
+    height: 500px;
+    bottom: -290px;
+    left: 6%;
+}
+
+/* Активация свечения при наведении */
+
+.servicesItem:hover .lightSpot1,
+.servicesItem:hover .lightSpot2 {
+    opacity: 1;
+}
+
+.servicesItem:hover {
+    background: #000f35;
+}
+
+.servicesItem:hover .servicesItemTitle {
+    color: var(--belyy)
+}
+
+.number {
+    transition: 300ms all ease;
+    padding-right: 15px;
+}
+
+.servicesItem:hover .number {
+    color: var(--zelenyy-2-osnovnoy);
+}
+
+.servicesItemContent {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 70px;
+    align-items: center;
+}
+
+.servicesItemTitle {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 25px);
+    line-height: 120%;
+    text-transform: uppercase;
+
+    transition: 300ms all ease;
+
+}
+
+.servicesItemText {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--seryy);
+    opacity: 0;
+    transition: 300ms all ease;
+}
+
+
+
+.servicesItem:hover .servicesItemText {
+    opacity: 1;
+}
+
+.servicesItem:hover .servicesItemTitle {
+    color: var(--belyy)
+}
+
+.number {
+    transition: 300ms all ease;
+    padding-right: 15px;
+}
+
+.servicesItem:hover .number {
+    color: var(--zelenyy-2-osnovnoy);
+}
+
+.servicesItemBtn {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background: var(--svetlo-seryy);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all ease;
+}
+
+.servicesItemBtn path {
+    transition: fill 300ms ease;
+    fill: var(--temnyy);
+
+}
+
+.servicesItem:hover .servicesItemBtn {
+    background: var(--siniy);
+    fill: var(--belyy);
+}
+
+.servicesItem:hover .servicesItemBtn path {
+    fill: var(--belyy);
+}
+
+.servicesItemImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+}
+
+.servicesItemImg {
+    height: 100%;
+    opacity: 0;
+    transform: scale(0.5);
+
+}
+
+.servicesItemImg {
+    transition: 300ms all ease;
+}
+
+.servicesItemImgDecor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+
+    transform: scale(0.1);
+    transition: all 300ms ease;
+
+    pointer-events: none;
+
+}
+
+@for $i from 1 through 30 {
+    .servicesItemImgDecor path:nth-child(#{$i}) {
+        // Сохраняем случайные значения в CSS переменные
+        --start-x: #{math.random(100) - 50}vw;
+        --start-y: #{math.random(100) - 50}vh;
+        
+        transform: translate(var(--start-x), var(--start-y));
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+.servicesItem:hover .servicesItemImgDecor path {
+    transform: translate(0, 0) !important; // Все path стремятся к 0
+}
+
+.servicesItem:hover .servicesItemImgDecor {
+        transform: scale(1.5) translate(13%, -23%);
+}
+
+.servicesItem:hover .servicesItemImg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Аудит сайта */
+
+.servicesItemImg1 :global(.butt) {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 120%;
+    text-transform: uppercase;
+    padding: 18px 50px;
+    z-index: 10;
+}

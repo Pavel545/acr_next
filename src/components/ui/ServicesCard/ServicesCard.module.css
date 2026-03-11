@@ -1,0 +1,129 @@
+.cardWrapper {
+    cursor: pointer;
+}
+
+.cardWrapper.collapsed {
+    transform: rotate(180deg);
+}
+
+.cardLink {
+    text-decoration: none;
+    display: block;
+}
+
+.card {
+    padding: 13px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+    transform-origin: center;
+    will-change: transform, background, gap, box-shadow;
+    
+    /* Изоляция для псевдоэлементов */
+    isolation: isolate;
+}
+
+/* Основной фон с блюром - более темный */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(72, 72, 72, 0.179); /* Более темный фон */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.149),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    z-index: -1;
+}
+
+/* Градиентная граница с бликами */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 0.5px; /* Толщина границы */
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.15) 30%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.15) 70%,
+        rgba(255, 255, 255, 0.5) 100%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+
+.card.hovered {
+    z-index: 10;
+}
+
+.iconBox {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.iconBox :global(.iconS) {
+    width: 100%;
+    height: 100%;
+    transition: fill 0.2s ease;
+}
+
+.text {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 120%;
+    color: var(--belyy);
+    white-space: nowrap;
+    overflow: hidden;
+    will-change: opacity, transform, max-width, padding;
+}
+
+.card:hover :global(.iconS path) {
+    fill: var(--zelenyy-2-osnovnoy);
+    transition: fill 0.2s ease;
+}
+
+/* Стили для контейнера услуг */
+.servicesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    transition: gap 0.4s ease;
+    justify-content: center;
+}
+
+.servicesList.collapsed {
+    gap: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .servicesList {
+        justify-content: flex-start;
+    }
+    
+    .text {
+        font-size: 14px;
+    }
+}

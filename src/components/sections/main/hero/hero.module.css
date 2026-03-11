@@ -1,0 +1,51 @@
+.content{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+}
+
+.title{
+    margin: 25px 0;
+
+}
+
+.services{
+
+}
+
+.heroHeading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 70px;
+}
+
+
+.services{
+    padding-top: 30px;
+    padding-bottom: 130px;
+    border-top: 1px solid rgba(255, 255, 255, 0.247);
+}
+
+
+.servicesTitle{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--belyy);
+}
+
+
+.servicesList{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+.icon{
+    
+}

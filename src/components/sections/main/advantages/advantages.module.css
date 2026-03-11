@@ -1,0 +1,131 @@
+.advantages {
+    padding: clamp(60px, 10vw, 145px) 0;
+}
+
+.title {
+    text-align: center;
+    font-size: clamp(24px, 5vw, 48px); /* Добавил адаптивный размер для заголовка */
+}
+
+.advantagesList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(15px, 3vw, 20px);
+    align-items: center;
+    justify-content: space-between;
+    margin: clamp(60px, 12vw, 170px) 0;
+}
+
+.advantagesItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 2vw, 20px);
+}
+
+.advantagesItemTitle {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: clamp(32px, 8vw, 60px);
+    line-height: 110%;
+    text-align: center;
+}
+
+.advantagesItemText {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: clamp(12px, 2.5vw, 16px);
+    line-height: 120%;
+    width: 100%;
+    max-width: 250px; /* Ограничиваем максимальную ширину текста */
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--seryy);
+    position: relative;
+    padding: 0 5px; /* Добавил отступы для маленьких экранов */
+}
+
+.advantagesItemText::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--svetlo-seryy);
+    animation: growLineFromCenter 1.8s ease-out forwards;
+    transform: scaleX(0);
+    transform-origin: center center;
+}
+
+@keyframes growLineFromCenter {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 992px) {
+    .advantagesList {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin: 80px 0;
+    }
+    
+    .advantagesItem {
+        padding: 0 20px;
+    }
+    
+    .advantagesItemTitle {
+        font-size: clamp(36px, 6vw, 50px);
+    }
+    
+    .advantagesItemText {
+        max-width: 300px;
+    }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 576px) {
+    .advantages {
+        padding: 40px 0;
+    }
+    
+    .advantagesList {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 50px 0;
+    }
+    
+    .advantagesItem {
+        padding: 0 15px;
+    }
+    
+    .advantagesItemTitle {
+        font-size: clamp(40px, 10vw, 48px);
+    }
+    
+    .advantagesItemText {
+        max-width: 280px;
+        font-size: 14px;
+    }
+    
+    .advantagesItemText::before {
+        top: -15px; /* Увеличил отступ для мобильных */
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .advantagesItemTitle {
+        font-size: 36px;
+    }
+    
+    .advantagesItemText {
+        font-size: 12px;
+        max-width: 240px;
+    }
+}

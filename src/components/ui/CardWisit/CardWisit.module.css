@@ -1,0 +1,79 @@
+.card {
+    display: flex;
+    gap: 38px;
+    padding: 20px;
+    min-width: 470px;
+    border-radius: 16px;
+    
+    position: relative;
+    isolation: isolate;
+}
+
+/* Слой с градиентом */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.4) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Основной фон с блюром */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+.cardImgBox {}
+
+.cardImg {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--belyy);
+}
+
+.post {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--svetlo-seryy);
+
+    margin: 2px 0 20px;
+}
+
+.button{
+    margin-top: auto;
+}
+
