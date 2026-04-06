@@ -1,17 +1,88 @@
-.blog{
-    padding: 50px 0;
+.blog {
+    padding: clamp(30vh, 10vh, 90px) 0;
 }
 
-.blogTitle{
+.blogTitle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 45px;
 }
 
-.blogContent{
+/* Десктопная версия - сетка */
+.blogContentDesktop {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr );
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
+
+/* Мобильный слайдер - скрыт на десктопе */
+.blogSliderMobile {
+    display: none;
+}
+
+/* Адаптивные стили */
+@media (max-width: 992px) {
+    .blogContentDesktop {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .blog {
+        padding: 40px 0;
+    }
+    
+    .blogTitle {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Скрываем сетку на мобильных */
+    .blogContentDesktop {
+        display: none;
+    }
+    
+    /* Показываем слайдер */
+    .blogSliderMobile {
+        display: block;
+        margin: 0 -15px;
+        padding: 0 15px 30px 15px;
+    }
+    
+    /* Стили для пагинации */
+    .blogSliderMobile :global(.swiper-pagination) {
+        bottom: 0;
+    }
+    
+    .blogSliderMobile :global(.swiper-pagination-bullet) {
+        width: 8px;
+        height: 8px;
+        background-color: #ccc;
+        opacity: 1;
+    }
+    
+    .blogSliderMobile :global(.swiper-pagination-bullet-active) {
+        background-color: #0070f3;
+        width: 20px;
+        border-radius: 4px;
+    }
+    
+    .blogTitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .blogTitle .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog {
+        padding: 30px 0;
+    }
 }

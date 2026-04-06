@@ -10,34 +10,32 @@ import MenuIcon from "../../../assets/icons/menu.svg";
 
 export const Header = () => {
     const [isVisible, setIsVisible] = useState(true);
-    const [menuOpen, setmenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
 
     useEffect(() => {
         const controlHeader = () => {
             const currentScrollY = window.scrollY;
 
-            // Определяем направление скролла
             if (currentScrollY > lastScrollY) {
-                // Скролл вниз - прячем
                 setIsVisible(false);
             } else {
-                // Скролл вверх - показываем
                 setIsVisible(true);
             }
 
-            // Обновляем последнюю позицию скролла
             setLastScrollY(currentScrollY);
         };
 
-        // Добавляем слушатель скролла
         window.addEventListener('scroll', controlHeader);
 
-        // Очищаем слушатель при размонтировании
         return () => {
             window.removeEventListener('scroll', controlHeader);
         };
     }, [lastScrollY]);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     return (
         <header
@@ -54,14 +52,15 @@ export const Header = () => {
                     </div>
 
                     <div className={s.header_right}>
-                        <nav  className={`${s.social_links} ${s.social_link_menu} ${menuOpen ?? s.open}`}>
-                            {SOCIAL_LINKS.map((link) => (
+                        <nav className={`${s.social_links} ${s.social_link_menu} ${menuOpen ? s.open : ''}`}>
+                            {SOCIAL_LINKS.map((link, index) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
                                     className={s.social_link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    style={{ '--i': index } as React.CSSProperties}
                                 >
                                     <Image
                                         className={s.social_link_image}
@@ -73,7 +72,7 @@ export const Header = () => {
                                 </a>
                             ))}
                         </nav>
-                        <span onClick={()=>setmenuOpen(!menuOpen)} className={s.social_link}>
+                        <span onClick={toggleMenu} className={`${s.menu_icon} ${menuOpen ? s.open : ''}`}>
                             <MenuIcon className={s.social_link_image} />
                         </span>
                         <button className='butt'>

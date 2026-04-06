@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Variants } from 'framer-motion'
 import Image from 'next/image'
@@ -74,7 +74,19 @@ const imageVariant: Variants = {
 
 export default function Cases() {
     const [index, setIndex] = useState(0)
+    const [isMobile, setIsMobile] = useState(false)
     const caseItem = cases[index]
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+        }
+        
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
 
     const nextSlide = () => {
         setIndex((prev) => (prev + 1) % cases.length)
@@ -86,7 +98,7 @@ export default function Cases() {
 
     return (
         <section className={s.cases}>
-            <div className={s.background} >
+            <div className={s.background}>
                 <motion.svg
                     className={s.decorLine}
                     viewBox="0 0 100 100"
@@ -96,7 +108,7 @@ export default function Cases() {
                     transition={{ duration: 1 }}
                 >
                     <motion.path
-                        d="   M50 100   Q52 92 56 90   T60 80 T68 78   T72 74   T80 68   T86 62   T92 56   T100 50   "
+                        d="M50 100 Q52 92 56 90 T60 80 T68 78 T72 74 T80 68 T86 62 T92 56 T100 50"
                         stroke="var(--zelenyy-2-osnovnoy)"
                         strokeWidth="0.6"
                         strokeLinecap="round"
@@ -110,24 +122,10 @@ export default function Cases() {
                             ease: 'easeInOut',
                         }}
                     />
-
-                    {/* лёгкое движение после прорисовки */}
-                    <motion.g
-                        animate={{
-                            x: [0, 1.5, 0],
-                            y: [0, -1.5, 0],
-                        }}
-                        transition={{
-                            duration: 7,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                        }}
-                    />
                 </motion.svg>
             </div>
             <div className="container">
                 <div className={s.cases__content}>
-
                     {/* LEFT SIDE */}
                     <div className={s.left}>
                         <div>
@@ -143,7 +141,6 @@ export default function Cases() {
                                     animate="show"
                                     exit="hidden"
                                 >
-
                                     {/* TAGS */}
                                     <div className={s.tags}>
                                         {caseItem.tags.map((tag) => (
@@ -152,13 +149,9 @@ export default function Cases() {
                                             </motion.span>
                                         ))}
                                     </div>
-
-
-
                                 </motion.div>
                             </AnimatePresence>
                         </div>
-
 
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -183,7 +176,6 @@ export default function Cases() {
                                     variants={fadeUp}
                                 >
                                     <p className={s.label}>Результат:</p>
-
                                     <motion.ul
                                         className={s.list}
                                         variants={containerStagger}
@@ -197,9 +189,9 @@ export default function Cases() {
                                             </motion.li>
                                         ))}
                                     </motion.ul>
-                                </motion.div>              </motion.div>
+                                </motion.div>
+                            </motion.div>
                         </AnimatePresence>
-
 
                         <div className={s.pagination}>
                             <span className={s.active}>
@@ -214,7 +206,6 @@ export default function Cases() {
 
                     {/* RIGHT SIDE */}
                     <div className={s.right}>
-
                         <AnimatePresence mode="wait">
                             <motion.h3
                                 key={caseItem.id + '-title'}
@@ -243,20 +234,29 @@ export default function Cases() {
                                         alt={caseItem.title}
                                         fill
                                         className={s.image}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                                        priority={index === 0}
                                     />
                                 </motion.div>
                             </AnimatePresence>
                         </div>
 
                         <div className={s.navigation}>
-                            <button onClick={prevSlide} className={s.arrowBtn}>
+                            <button 
+                                onClick={prevSlide} 
+                                className={s.arrowBtn}
+                                aria-label="Previous case"
+                            >
                                 ←
                             </button>
-                            <button onClick={nextSlide} className={s.nextBtn}>
-                                Следующий кейс →
+                            <button 
+                                onClick={nextSlide} 
+                                className={s.nextBtn}
+                                aria-label="Next case"
+                            >
+                                {isMobile ? 'Следующий →' : 'Следующий кейс →'}
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>

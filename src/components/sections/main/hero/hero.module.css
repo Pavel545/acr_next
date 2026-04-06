@@ -1,39 +1,36 @@
-.content{
-    height: 100vh;
+.content {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end
+    justify-content: flex-end;
+    position: relative;
 }
 
-.title{
+.title {
     margin: 25px 0;
     font-size: 46px;
-
 }
 
-.title span{
+.title span {
     all: unset;
-
     color: var(--zelenyy-2-osnovnoy);
 }
 
-.heroHeading{
+.heroHeading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding-bottom: 70px;
+    position: relative;
 }
 
-
-.services{
+.services {
     padding-top: 30px;
     padding-bottom: 100px;
     border-top: 1px solid rgba(255, 255, 255, 0.247);
 }
 
-
-.servicesTitle{
+.servicesTitle {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
@@ -41,14 +38,96 @@
     color: var(--belyy);
 }
 
-
-.servicesList{
+.servicesList {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
+.servicesList.collapsed {
+    /* Стили для свернутого состояния */
+}
 
-.icon{
+/* Адаптив */
+@media (max-width: 1440px) {
+    .title {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .heroHeading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+        padding-bottom: 50px;
+    }
     
+    .title {
+        font-size: 34px;
+        text-align: center;
+    }
+    
+    .services {
+        padding-bottom: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 30px;
+    }
+    
+    .servicesList {
+        gap: 8px;
+    }
+    
+    .services {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+        margin: 15px 0;
+    }
+    
+    .heroHeading {
+        padding-bottom: 30px;
+        gap: 20px;
+    }
+    
+    .services {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+    
+    .servicesTitle {
+        font-size: 16px;
+    }
+    
+    .servicesList {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 20px;
+    }
+    
+    .heroHeading {
+        padding-bottom: 20px;
+    }
+    
+    .services {
+        padding-bottom: 30px;
+    }
+    
+    .servicesTitle {
+        font-size: 14px;
+    }
 }

@@ -1,5 +1,5 @@
 .technologies {
-    padding: 180px 0;
+    padding: clamp(30px, 10vh, 180px) 0;
     background: var(--svetlyy);
     overflow: hidden; // Важно для предотвращения горизонтального скролла
 }
@@ -80,9 +80,7 @@
 
 // Медиа-запросы для адаптивности
 @media (max-width: 768px) {
-    .technologies {
-        padding: 100px 0;
-    }
+  
 
     .content {
         margin-top: 40px;

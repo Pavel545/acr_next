@@ -1,21 +1,19 @@
 .cooperationCard {
     position: relative;
-
     width: 100%;
     min-height: 360px;
-
     border-radius: 10px;
+    perspective: 1000px;
+    height: 100%;
 }
 
 .cooperationCard__icon {
     position: absolute;
     top: 0;
     right: 0;
-
     width: 60%;
     height: auto;
 }
-
 
 .cooperationCardFront {
     background: var(--belyy);
@@ -23,14 +21,20 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
-
     height: 100%;
     position: relative;
+    border-radius: var(--br);
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-height: 80px;
+    }
 }
 
 .cooperationCard__title {
     font-weight: 700;
-
     font-size: 25px;
     line-height: 120%;
     text-transform: uppercase;
@@ -45,13 +49,13 @@
     color: var(--temnyy);
 }
 
-
 .cooperationCardBack {
     background: var(--belyy);
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+    border-radius: var(--br);
 
     &__title {
         font-weight: 700;
@@ -60,43 +64,202 @@
         text-transform: uppercase;
         color: var(--siniy);
     }
+    
+    &__text {
+        font-size: 16px;
+        line-height: 140%;
+        color: var(--temnyy);
+        margin: 0;
+    }
 }
 
-
-.cooperationCard {
-  perspective: 1000px;
-  width: 100%;
-  height: 100%;
-}
-
+// 3D Flip эффект только для десктопа
 .cooperationCardInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
 }
 
-/* 🔥 сам эффект */
 .cooperationCard:hover .cooperationCardInner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .cooperationCardFront,
 .cooperationCardBack {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  border-radius: var(--br);
-  overflow: hidden;
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: var(--br);
+    overflow: hidden;
 }
 
-/* фронт */
 .cooperationCardFront {
-  z-index: 2;
+    z-index: 2;
 }
 
-/* зад */
 .cooperationCardBack {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+// Мобильная версия - без переворота, весь контент виден
+.cooperationCardMobile {
+    width: 100%;
+    min-height: auto;
+    border-radius: 10px;
+    background: var(--belyy);
+    display: flex;
+    flex-direction: column;
+    
+    .cooperationCardFront {
+        position: relative;
+        padding: 25px;
+        min-height: auto;
+        
+        &__header {
+            min-height: 70px;
+            margin-bottom: 20px;
+        }
+    }
+    
+    .cooperationCard__count {
+        font-size: 38px;
+    }
+    
+    .cooperationCard__icon {
+        width: 50%;
+    }
+    
+    .cooperationCard__title {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    
+    .cooperationCardBack {
+        position: relative;
+        padding: 25px;
+        gap: 15px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        
+        &__title {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        &__text {
+            font-size: 14px;
+            line-height: 140%;
+        }
+    }
+}
+
+// Адаптивные брейкпоинты
+@media (max-width: 1200px) {
+    .cooperationCard {
+        min-height: 320px;
+    }
+    
+    .cooperationCardFront,
+    .cooperationCardBack {
+        padding: 25px;
+    }
+    
+    .cooperationCard__title {
+        font-size: 22px;
+    }
+    
+    .cooperationCard__count {
+        font-size: 38px;
+    }
+    
+    .cooperationCardBack__title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .cooperationCard {
+        min-height: 300px;
+    }
+    
+    .cooperationCard__title {
+        font-size: 20px;
+    }
+    
+    .cooperationCard__count {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 768px) {
+    // На мобильных устройствах flip-эффект отключается через JS
+    // Стили для .cooperationCardMobile уже описаны выше
+    
+    .cooperationCard {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+  .cooperationCardBack__title{
+    display: none;
+  }
+    .cooperationCardMobile {
+        .cooperationCardFront {
+            padding: 20px;
+        }
+        
+        .cooperationCard__count {
+            font-size: 32px;
+        }
+        
+        .cooperationCard__title {
+            font-size: 18px;
+        }
+        
+        .cooperationCardBack {
+            padding: 20px;
+            
+            &__title {
+                font-size: 18px;
+            }
+            
+            &__text {
+                font-size: 13px;
+            }
+        }
+        
+        .cooperationCard__icon {
+            width: 45%;
+        }
+    }
+}
+
+// Альтернативное решение без JS (чистый CSS)
+// Если хотите избежать JS, можно использовать медиа-запрос с pointer: coarse
+@media (hover: none) and (max-width: 768px) {
+    .cooperationCard {
+        min-height: auto;
+    }
+    
+    .cooperationCardInner {
+        transform: none !important;
+        position: static;
+    }
+    
+    .cooperationCardFront,
+    .cooperationCardBack {
+        position: relative;
+        backface-visibility: visible;
+        transform: none !important;
+    }
+    
+    .cooperationCardBack {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .cooperationCard:hover .cooperationCardInner {
+        transform: none;
+    }
 }

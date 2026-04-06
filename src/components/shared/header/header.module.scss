@@ -186,3 +186,91 @@
 }
 
 
+// Добавьте эти стили в ваш header.module.scss
+
+.social_link_menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    overflow: hidden;
+    
+    .social_link {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+        transition-delay: calc(var(--i) * 0.05s);
+    }
+    
+    &.open .social_link {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Анимация для иконки меню
+.menu_icon {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+    display: inline-flex;
+    
+    &.open {
+        transform: rotate(90deg);
+    }
+}
+
+// Альтернативный вариант с более плавным появлением
+.social_link_menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    .social_link {
+        opacity: 0;
+        transform: scale(0.8) translateX(20px);
+        transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+        transition-delay: calc(var(--i) * 0.03s);
+        
+        // Добавляем анимацию при наведении даже в скрытом состоянии
+        pointer-events: none;
+    }
+    &.open .social_link {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+        pointer-events: auto;
+       
+        // Каскадная анимация с задержкой при появлении
+        @for $i from 0 through 10 {
+            &:nth-child(#{$i + 1}) {
+                transition-delay: #{0.03 * ($i + 1)}s;
+            }
+        }
+    }
+    
+    // При закрытии - анимация в обратном порядке
+    &:not(.open) .social_link {
+        transition-delay: calc((10 - var(--i)) * 0.03s);
+    }
+}
+
+.menu_icon {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+    display: inline-flex;
+    
+    &:hover {
+        transform: scale(1.1);
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    &.open {
+        transform: rotate(90deg);
+        
+        &:hover {
+            transform: rotate(90deg) scale(1.1);
+        }
+    }
+}
+

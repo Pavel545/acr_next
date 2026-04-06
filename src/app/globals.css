@@ -70,17 +70,40 @@ button {
 } */
 
 
+/* Базовые стили (десктоп) */
 .container {
-  width: 1500px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1640px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Планшеты */
+@media screen and (max-width: 1199px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/* Мобильные устройства */
+@media screen and (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Маленькие мобильные */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
 }
 
 
 .h1 {
   font-family: var(--second-family);
   font-weight: 700;
-  font-size: 60px;
+  font-size: clamp(24px, 4rem, 60px);
   line-height: 110%;
   text-transform: uppercase;
   color: var(--belyy);
@@ -121,9 +144,17 @@ button {
 .h2 {
   font-family: var(--second-family);
   font-weight: 700;
-  font-size: 40px;
+  font-size: clamp(25px, 2.2vw, 40px);
   line-height: 110%;
   text-transform: uppercase;
+}
+
+.h3{
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: clamp(16px, 1.5rem, 25px);
+    line-height: 120%;
+    text-transform: uppercase;
 }
 
 .siniy {

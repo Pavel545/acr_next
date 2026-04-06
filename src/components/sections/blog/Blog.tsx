@@ -1,8 +1,12 @@
+"use client";
+
 import Link from 'next/link';
 import s from './Blog.module.css';
-import { title } from 'process';
 import BlogCard from '@/components/ui/BlogCard/BlogCard';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function Blog() {
     const blogPosts = [
@@ -48,10 +52,33 @@ export default function Blog() {
                     </Link>
                 </div>
 
-                <div className={s.blogContent}>
+                {/* Десктопная сетка */}
+                <div className={s.blogContentDesktop}>
                     {blogPosts.map((post, key) => (
                         <BlogCard key={key} {...post} />
                     ))}
+                </div>
+
+                {/* Мобильный слайдер */}
+                <div className={s.blogSliderMobile}>
+                    <Swiper
+                        modules={[Pagination]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        pagination={{ clickable: true }}
+                        breakpoints={{
+                            576: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                        }}
+                    >
+                        {blogPosts.map((post, key) => (
+                            <SwiperSlide key={key}>
+                                <BlogCard {...post} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
             </div>
         </section>

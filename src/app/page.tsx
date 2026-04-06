@@ -3,7 +3,7 @@ import Advantages from "@/components/sections/main/advantages/advantages";
 import Cases from "@/components/sections/main/cases/cases";
 import Cooperation from "@/components/sections/main/cooperation/Сooperation";
 import HeroMain from "@/components/sections/main/hero/hero";
-import Services from "@/components/sections/main/services/services";
+import ServicesG from "@/components/sections/main/services";
 import Technologies from "@/components/sections/main/technologies/technologies";
 
 
@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <HeroMain />
       <Cooperation />
-      <Services />
+      <ServicesG />
       <Cases />
       <Advantages />
       <Technologies />

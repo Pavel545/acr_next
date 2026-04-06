@@ -1,4 +1,4 @@
-import { NAVIGATION_LINKS, SOCIAL_LINKS } from "@/config/constants";
+import { SERVISES_LINKS, SOCIAL_LINKS } from "@/config/constants";
 import s from "./footer.module.css";
 import Image from "next/image";
 import FosFot from "@/components/ui/fosFot/fosFot";
@@ -7,22 +7,19 @@ import FosFot from "@/components/ui/fosFot/fosFot";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
-    
+
     return (
         <footer className={s.footer}>
             <div className="container">
                 <div className={s.content}>
                     <div className={s.leftContent}>
                         <p className="h2">
-                            время Цифрового <br />
-                            ускорения
+                            Давайте обсудим ваш проект
+                        </p>
+                        <p className={s.leftContentText}>
+                            Выберите нужную услугу, кратко опишите вашу задачу и заполните свои контактные данные.
                         </p>
 
-                        <nav className={s.footLinks}>
-                            {NAVIGATION_LINKS.map((e,i)=>(
-                                <a key={i} className={s.footLink} href={e.href}>{e.name}</a>
-                            ))}
-                        </nav>
 
                         <nav className={s.social_links}>
                             {SOCIAL_LINKS.map((link) => (
@@ -32,8 +29,17 @@ export const Footer = () => {
                             ))}
                         </nav>
                     </div>
-                    
+
                     <div className={s.footFos}>
+                        <div>
+                            <h3 className="h3">Услуги</h3>
+                            <nav className={s.footLinks}>
+                                {SERVISES_LINKS.map((e, i) => (
+                                    <a key={i} className={s.footLink} href={e.href}>{e.name}</a>
+                                ))}
+                            </nav>
+                        </div>
+                        
                         <FosFot />
                     </div>
                 </div>

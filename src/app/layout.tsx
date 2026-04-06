@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   },
 
   // Манифест
-  manifest: "/manifest.json",
+  // manifest: "/manifest.json",
 
   // Apple Web App
   appleWebApp: {

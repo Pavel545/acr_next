@@ -1,0 +1,95 @@
+.ServicesMobile {
+    background: var(--svetlyy);
+    padding: 80px 0;
+}
+
+.ps {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--seryy);
+    padding: 20px 0;
+}
+
+.ServicesMobileGrid {
+    transition: 500ms all;
+    display: grid;
+    gap: 5px;
+    grid-template-areas:
+        "_ b"
+        "c d"
+        "e f"
+        "g q";
+
+ 
+}
+.ServicesMobileGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 150px;
+    gap: 5px;
+}
+
+.item {
+    color: red;
+    background: var(--belyy);
+    border-radius: 5px;
+    min-height: 150px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    
+    .content {
+        padding: 20px;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+    
+    &.active {
+        background: linear-gradient(180deg, #000512 0%, #000f35 100%);
+        
+        .content {
+            opacity: 1;
+            color: white;
+        }
+    }
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.item_1 {
+    grid-area: b;
+}
+
+.item_2 {
+    grid-area: c;
+
+}
+
+.item_3 {
+    grid-area: d;
+
+}
+
+.item_4 {
+    grid-area: e;
+
+}
+
+.item_5 {
+    grid-area: f;
+
+}
+
+.item_6 {
+    grid-area: g;
+
+}
+
+.item_7 {
+    grid-area: q;
+
+}

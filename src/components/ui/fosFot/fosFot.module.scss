@@ -18,18 +18,23 @@
     }
 }
 
+.box{
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
 .form {
     margin-top: 20px;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
 .osnova {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 50px;
 }
 
 .input {
@@ -115,6 +120,11 @@
 
 .date {}
 
+.basa4{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr );
+    gap: 15px;
+}
 .agreement {
     display: block;
     font-family: var(--font-family);

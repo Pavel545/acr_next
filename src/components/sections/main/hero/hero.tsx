@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { VideoSection } from '@/components/ui/VideoSection/VideoSection';
 import s from './hero.module.css';
 import CardWisit from '@/components/ui/CardWisit/CardWisit';
@@ -15,6 +15,8 @@ import Icon6 from '@/assets/icons/services/6.svg';
 export default function HeroMain() {
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
     const [hasAutoCollapsed, setHasAutoCollapsed] = useState(false);
+    const [isCardFloating, setIsCardFloating] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     // Авто-сворачивание через 3 секунды после монтирования (только 1 раз)
     useEffect(() => {
@@ -28,13 +30,43 @@ export default function HeroMain() {
         }
     }, [hasAutoCollapsed]);
 
+    // Использование Intersection Observer
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const [entry] = entries;
+                // Карточка становится плавающей, когда секция полностью выходит из viewport
+                setIsCardFloating(!entry.isIntersecting);
+            },
+            {
+                threshold: 0,
+                rootMargin: '0px'
+            }
+        );
+
+        observer.observe(sectionRef.current);
+        
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     const handleToggle = () => {
         setIsExpanded(!isExpanded);
     };
 
     return (
-        <VideoSection className={s.hero} videoSrc="/video/heroMain.webm" poster="/video/heroMainPoster.jpg" priority>
-            <div className={s.content}>
+        <VideoSection 
+            className={s.hero} 
+            videoSrc="/video/heroMain.webm" 
+            poster="/video/heroMainPoster.jpg" 
+            priority
+        >
+            <div className={s.content} ref={sectionRef}>
                 <div className={s.heroHeading}>
                     <h1 className={'h1 ' + s.title}>
                         создаем  <br />
@@ -43,7 +75,13 @@ export default function HeroMain() {
                         </span>
                     </h1>
 
-                    <CardWisit src="/img/eva1.png" name="Ева " post="ИИ-ассистент" textButton="Обсудить проект" />
+                    <CardWisit 
+                        src="/img/eva1.png" 
+                        name="Ева" 
+                        post="ИИ-ассистент" 
+                        textButton="Обсудить проект"
+                        isFloating={isCardFloating}
+                    />
                 </div>
 
                 <div className={s.services}>

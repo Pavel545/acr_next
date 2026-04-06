@@ -1,11 +1,11 @@
-.cooperation{
+.cooperation {
     padding: clamp(2rem, 9vw, 30rem) 0;
     background: var(--svetlyy);
     position: relative;
     overflow: hidden;
 }
 
-.cooperationContent{
+.cooperationContent {
     position: relative;
     z-index: 1;
 }
@@ -15,7 +15,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 
-    @media(max-width: 1024px){
+    @media(max-width: 1024px) {
         display: none !important; // важно
     }
 }
@@ -24,7 +24,7 @@
 .cooperation__containerMobile {
     display: none;
 
-    @media(max-width: 1024px){
+    @media(max-width: 1024px) {
         display: block !important; // чтобы Swiper был виден
         width: 100%;
     }
@@ -34,9 +34,14 @@
     }
 }
 
-.cooperation__title{
-     text-align: center;
-     margin-bottom: 80px;
+.cooperation__title {
+    text-align: center;
+    margin-bottom: 80px;
+
+     @media(max-width: 500px) {
+    text-align: start;
+
+     }
 }
 
 .decore {
@@ -47,7 +52,7 @@
     pointer-events: none;
 }
 
-.cooperationBut{
+.cooperationBut {
     margin-top: 20px;
     width: 100%;
     padding: 20px 0;
