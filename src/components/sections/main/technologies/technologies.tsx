@@ -4,13 +4,14 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useAnimation, Variants } from "framer-motion";
 import s from "./technologies.module.scss";
-
+import { useMediaQuery } from '@/lib/isMobile';
 export default function Technologies() {
     const [duplicatedTechnologies, setDuplicatedTechnologies] = useState<any[]>([]);
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
     const controls = useAnimation();
-
+    const isMobile = useMediaQuery("(max-width: 768px)");
+   
     const technologies = [
         {
             icons: '/icons/technologies/css.jpg',
@@ -76,13 +77,13 @@ export default function Technologies() {
 
     // Анимация появления элементов
     const itemVariants: Variants = {
-        hidden: { 
-            opacity: 0, 
+        hidden: {
+            opacity: 0,
             scale: 0.8,
             filter: "blur(10px)"
         },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             scale: 1,
             filter: "blur(0px)",
             transition: {
@@ -91,11 +92,13 @@ export default function Technologies() {
             }
         }
     };
-
+ if (isMobile) {
+        return '';
+    }
     return (
         <section className={s.technologies} id="technologies" ref={sectionRef}>
             <div className="container">
-                <motion.h2 
+                <motion.h2
                     className="h2"
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -103,14 +106,14 @@ export default function Technologies() {
                 >
                     Наши технологии
                 </motion.h2>
-                
+
                 <div className={s.content}>
-                    <motion.div 
+                    <motion.div
                         className={s.scrollContent}
                         animate={controls}
                     >
                         {duplicatedTechnologies.map((e, i) => (
-                            <motion.div 
+                            <motion.div
                                 key={i}
                                 className={s.item}
                                 variants={itemVariants}
@@ -120,10 +123,10 @@ export default function Technologies() {
                                 transition={{ delay: i * 0.05 }}
                             >
                                 <div className={s.imgBox}>
-                                    <Image 
-                                        alt={e.title} 
-                                        src={e.icons} 
-                                        width={190} 
+                                    <Image
+                                        alt={e.title}
+                                        src={e.icons}
+                                        width={190}
                                         height={190}
                                         className={s.image}
                                     />

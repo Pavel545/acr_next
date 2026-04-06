@@ -1,5 +1,7 @@
 .blog {
     padding: clamp(30vh, 10vh, 90px) 0;
+
+    overflow: hidden;
 }
 
 .blogTitle {
@@ -54,6 +56,8 @@
     /* Стили для пагинации */
     .blogSliderMobile :global(.swiper-pagination) {
         bottom: 0;
+        margin-bottom: 10px;
+        position: relative;
     }
     
     .blogSliderMobile :global(.swiper-pagination-bullet) {
@@ -64,7 +68,8 @@
     }
     
     .blogSliderMobile :global(.swiper-pagination-bullet-active) {
-        background-color: #0070f3;
+      
+        background-color: var(--zelenyy-6);
         width: 20px;
         border-radius: 4px;
     }

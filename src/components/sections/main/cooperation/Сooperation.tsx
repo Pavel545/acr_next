@@ -101,6 +101,7 @@ export default function Cooperation() {
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         modules={[Pagination]}
+                        
                     >
                         {cooperation.map((item, index) => (
                             <SwiperSlide key={index}>

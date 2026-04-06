@@ -3,6 +3,22 @@
     background: var(--svetlyy);
     position: relative;
     overflow: hidden;
+
+
+
+
+    @media(max-width: 500px) {
+        :global(.swiper-pagination) {
+            margin-top: 10px;
+            position: static !important;
+
+
+        }
+
+        :global(.swiper-pagination-bullet-active) {
+            background: var(--temnyy);
+        }
+    }
 }
 
 .cooperationContent {
@@ -16,7 +32,7 @@
     gap: 20px;
 
     @media(max-width: 1024px) {
-        display: none !important; // важно
+        display: none !important; 
     }
 }
 
@@ -25,7 +41,7 @@
     display: none;
 
     @media(max-width: 1024px) {
-        display: block !important; // чтобы Swiper был виден
+        display: block !important; 
         width: 100%;
     }
 
@@ -38,10 +54,10 @@
     text-align: center;
     margin-bottom: 80px;
 
-     @media(max-width: 500px) {
-    text-align: start;
+    @media(max-width: 500px) {
+        text-align: start;
 
-     }
+    }
 }
 
 .decore {

@@ -15,6 +15,13 @@
     width: fit-content;
     will-change: transform; // Оптимизация производительности
     min-height: 300px;
+
+
+    @media (max-width: 768px) {
+        gap: 8px;
+    min-height: 150px;
+
+    }
 }
 
 .item {
@@ -92,7 +99,6 @@
 
     .itemTitle {
         font-size: 24px;
-        padding: 15px 10px;
     }
 
     .imgBox {
@@ -107,7 +113,6 @@
 
     .itemTitle {
         font-size: 20px;
-        padding: 12px 8px;
     }
 
     .imgBox {

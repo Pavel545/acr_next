@@ -140,7 +140,6 @@
         position: relative;
         padding: 25px;
         gap: 15px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
         
         &__title {
             font-size: 22px;
@@ -255,9 +254,7 @@
         transform: none !important;
     }
     
-    .cooperationCardBack {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
+
     
     .cooperationCard:hover .cooperationCardInner {
         transform: none;

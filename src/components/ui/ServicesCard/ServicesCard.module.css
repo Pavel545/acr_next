@@ -21,7 +21,7 @@
     z-index: 1;
     transform-origin: center;
     will-change: transform, background, gap, box-shadow;
-    
+
     /* Изоляция для псевдоэлементов */
     isolation: isolate;
 }
@@ -32,10 +32,11 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: rgba(72, 72, 72, 0.179); /* Более темный фон */
+    background: rgba(72, 72, 72, 0.179);
+    /* Более темный фон */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.149),
         inset 0 1px 2px rgba(255, 255, 255, 0.1);
     z-index: -1;
@@ -47,20 +48,19 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 0.5px; /* Толщина границы */
-    background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(255, 255, 255, 0.15) 30%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0.15) 70%,
-        rgba(255, 255, 255, 0.5) 100%
-    );
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
+    padding: 0.5px;
+    /* Толщина границы */
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.15) 30%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.15) 70%,
+            rgba(255, 255, 255, 0.5) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
-    mask: 
-        linear-gradient(#fff 0 0) content-box, 
+    mask:
+        linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -122,8 +122,32 @@
     .servicesList {
         justify-content: flex-start;
     }
-    
+
     .text {
         font-size: 14px;
+    }
+
+    .card {
+        padding: 10px;
+        border-radius: 40px;
+        gap: 5px !important;
+    }
+
+    .iconBox {
+        width: 32px;
+        height: 32px;
+    }
+
+.iconBox svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden; /* 👈 важно */
+}
+
+    .text {
+        font-size: 13px;
+        padding-right: 10px !important;
+        max-width: none !important;
     }
 }
