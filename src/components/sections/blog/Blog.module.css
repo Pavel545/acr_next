@@ -1,0 +1,17 @@
+.blog{
+    padding: 50px 0;
+}
+
+.blogTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+.blogContent{
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr );
+    gap: 20px;
+}

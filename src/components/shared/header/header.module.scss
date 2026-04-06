@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out;
 }
 
 .header_visible {
@@ -29,43 +29,12 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
-    background: rgba(2, 9, 35, 0.3); 
-    backdrop-filter: blur(20px); /* Эффект матового стекла */
-    -webkit-backdrop-filter: blur(ц0px); /* Для Safari */
-    box-shadow: 0px 3px 10px rgba(192, 191, 191, 0.32);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Легкая обводка для усиления эффекта */
+    backdrop-filter: blur(12px);
+    background: rgba(40, 38, 49, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Легкая обводка для усиления эффекта */
 }
 
-.navigation {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.nav_link {
-    background: var(--belyy);
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    color: var(--temnyy);
-    transition: 300ms ease-in-out;
-    text-decoration: none; /* Добавил для лучшего вида */
-
-    display: flex;
-    align-items: center;
-}
-
-
-.nav_link:hover {
-    color: var(--siniy);
-}
-
-.nav_link:active {
-    color: var(--belyy);
-    background: var(--siniy);
-}
 
 .social_links {
     display: flex;
@@ -77,6 +46,11 @@
     transition: 300ms ease-in-out;
     border-radius: var(--br);
     fill: var(--belyy);
+}
+
+.social_link{
+    cursor: pointer;
+
 }
 
 .social_link:hover .social_link_image {
@@ -93,16 +67,25 @@
     display: inline-flex;
     align-items: center;
     position: relative;
+
+       min-width: 360px;
+
     overflow: hidden;
+
+    /* показываем только область иконки */
+    transition: clip-path 0.4s cubic-bezier(.4, 0, .2, 1);
 }
+
 
 .logoImg path {
     transform-box: fill-box;
     transform-origin: center;
+    vector-effect: non-scaling-stroke;
 }
 
 .logoImg {
-    display: block;
+
+    flex-shrink: 0;
 }
 
 /* начальная позиция */
@@ -126,10 +109,18 @@
         opacity: 0;
         filter: blur(10px);
         transform: translateX(-50px);
-        
+
         animation: slideFromLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        animation-delay: #{$i * 0.1}s; 
+        animation-delay: #{$i * 0.1}s;
     }
+}
+
+.logoImg [data-alf] {
+    transition: opacity 0.25s ease;
+}
+
+.logo:not(:hover) .logoImg [data-alf] {
+    opacity: 0;
 }
 
 @keyframes slideFromLeft {
@@ -138,6 +129,7 @@
         filter: blur(10px);
         transform: translateX(-50px);
     }
+
     100% {
         opacity: 1;
         filter: blur(0);
@@ -152,6 +144,7 @@
 .logo:hover [data-count="three"] {
     transform: translateX(0);
 }
+
 .logo:hover [data-alf="line"] {
     fill: var(--zelenyy-2-osnovnoy);
 }
@@ -174,20 +167,22 @@
     0% {
         fill: var(--zelenyy-2-osnovnoy);
     }
+
     50% {
         fill: var(--siniy);
     }
+
     100% {
         fill: var(--zelenyy-2-osnovnoy);
     }
 }
 
 
-.nav_link_visible {
-
-
+.header_left,
+.header_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav_link_hidden {
 
-}

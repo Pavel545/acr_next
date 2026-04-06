@@ -1,0 +1,126 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 20px; // место для линии
+  height: 90px;
+}
+
+.h2 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: var(--temnyy);
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+// ========== ВАРИАНТ 1: Волна ==========
+.lineWave {
+  position: absolute;
+  bottom: 0;
+     left: -410px;
+
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+}
+
+
+.lineWave2 {
+  position: absolute;
+  bottom: -7px;
+     left: -430px;
+
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+//   filter: drop-shadow(-28px 8px 0px #dcff5c91);
+}
+
+// ========== ВАРИАНТ 2: Неон ==========
+.neonContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  overflow: visible;
+}
+
+.neonLine {
+  position: absolute;
+  height: 2px;
+  background: var(--zelenyy-5);
+  box-shadow: 
+    0 0 10px var(--zelenyy-5),
+    0 0 20px var(--zelenyy-5),
+    0 0 30px var(--zelenyy-5);
+}
+
+.neonGlow {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: -8px;
+  background: radial-gradient(circle, var(--zelenyy-5) 0%, transparent 70%);
+  filter: blur(5px);
+}
+
+// ========== ВАРИАНТ 3: Стирание ==========
+.maskContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+}
+
+.staticLine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--zelenyy-5);
+}
+
+.maskLine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--temnyy);
+  z-index: 2;
+}
+
+// ========== ВАРИАНТ 4: Градиент + вспышка ==========
+.gradientLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--zelenyy-5), 
+    var(--zelenyy-2-osnovnoy),
+    var(--zelenyy-5), 
+    transparent
+  );
+  transform-origin: left;
+  z-index: 1;
+}
+
+.flash {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, var(--zelenyy-5) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}

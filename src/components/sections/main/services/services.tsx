@@ -7,6 +7,7 @@ import Decor2 from '@/assets/images/services3D/3.svg';
 import Decor6 from '@/assets/images/services3D/4.svg';
 import Decor7 from '@/assets/images/services3D/5.svg';
 import Decor3 from '@/assets/images/services3D/6.svg';
+import { SectionTitle } from '@/components/ui/TitleReveal/TitleReveal';
 
 export default function Services() {
 
@@ -15,8 +16,9 @@ export default function Services() {
         <section className={s.services}>
             <div className='container'>
                 <div className={s.servicesHeader}>
-                    <h2 className={"h2 " + s.servicesTitle}>услуги</h2>
-
+                    <SectionTitle >
+                        услуги
+                    </SectionTitle>
                     <p className={s.servicesText}>
                         Используйте передовые технологии <br />и инновационные инструменты, чтобы сделать ваш бизнес быстрее, проще <br />и прибыльнее
                     </p>
@@ -38,7 +40,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg1}>
-                                <Decor1 className={s.servicesItemImgDecor}/>
+                                <Decor1 className={s.servicesItemImgDecor} />
                                 <button className='butt'>Бесплатно</button>
                             </div>
                             <button className={s.servicesItemBtn}>
@@ -63,7 +65,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg2}>
-                                <Decor2 className={s.servicesItemImgDecor}/>
+                                <Decor2 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +89,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg3}>
-                                <Decor3 className={s.servicesItemImgDecor}/>
+                                <Decor3 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +113,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg4}>
-                                <Decor4 className={s.servicesItemImgDecor}/>
+                                <Decor4 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +137,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg5}>
-                                <Decor5 className={s.servicesItemImgDecor}/>
+                                <Decor5 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +161,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg6}>
-                                <Decor6 className={s.servicesItemImgDecor}/>
+                                <Decor6 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +185,7 @@ export default function Services() {
                             </p>
 
                             <div className={s.servicesItemImg + ' ' + s.servicesItemImg7}>
-                                <Decor7 className={s.servicesItemImgDecor}/>
+                                <Decor7 className={s.servicesItemImgDecor} />
                             </div>
                             <button className={s.servicesItemBtn}>
                                 <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">

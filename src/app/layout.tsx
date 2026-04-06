@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { inter, unbounded } from './fonts';
+
 import { Header } from "@/components/shared/header/header";
 import { Footer } from "@/components/shared/footer/footer";
 
@@ -155,7 +157,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
       <body >
         <Header/>
         {children}

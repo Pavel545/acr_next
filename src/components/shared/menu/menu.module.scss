@@ -1,0 +1,100 @@
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    /* Затемняем фон для контраста с белыми элементами */
+    // background: rgba(0, 0, 0, 0.393);
+    
+    /* Увеличиваем размытие */
+    // backdrop-filter: blur(10px);
+    
+    /* Добавляем легкую обводку */
+    // border: 1px solid rgba(255, 255, 255, 0.5);
+    
+    /* Легкая тень для объема */
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    padding: 10px 20px;
+    border-radius: var(--br) var(--br) 0 0;
+}
+
+.nav_link {
+    // background: var(--belyy);
+    border-radius: 10px;
+    padding: 0 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--temnyy);
+    transition: 300ms ease-in-out;
+    text-decoration: none;
+    
+    
+
+
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.mob_menu{
+    // position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999999;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_link:hover {
+    color: var(--siniy);
+}
+
+.nav_link:active {
+    color: var(--belyy);
+    background: var(--siniy);
+}
+
+.nav_link_text {
+    white-space: nowrap;
+}
+
+
+.nav_link {
+    position: relative;
+    border-radius: 10px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav_link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: var(--belyy);
+    border-radius: inherit;
+
+    z-index: 0;
+
+    mask:
+        radial-gradient(18px at 34px center, transparent 98%, black 100%),
+        linear-gradient(black, black);
+
+    mask-composite: intersect;
+}
+
+/* Контент поверх */
+.nav_link>* {
+    position: relative;
+    z-index: 1;
+}

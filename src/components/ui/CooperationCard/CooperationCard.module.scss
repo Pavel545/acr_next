@@ -1,0 +1,102 @@
+.cooperationCard {
+    position: relative;
+
+    width: 100%;
+    min-height: 360px;
+
+    border-radius: 10px;
+}
+
+.cooperationCard__icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 60%;
+    height: auto;
+}
+
+
+.cooperationCardFront {
+    background: var(--belyy);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+
+    height: 100%;
+    position: relative;
+}
+
+.cooperationCard__title {
+    font-weight: 700;
+
+    font-size: 25px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--temnyy);
+}
+
+.cooperationCard__count {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--temnyy);
+}
+
+
+.cooperationCardBack {
+    background: var(--belyy);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 120%;
+        text-transform: uppercase;
+        color: var(--siniy);
+    }
+}
+
+
+.cooperationCard {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+.cooperationCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* 🔥 сам эффект */
+.cooperationCard:hover .cooperationCardInner {
+  transform: rotateY(180deg);
+}
+
+.cooperationCardFront,
+.cooperationCardBack {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--br);
+  overflow: hidden;
+}
+
+/* фронт */
+.cooperationCardFront {
+  z-index: 2;
+}
+
+/* зад */
+.cooperationCardBack {
+  transform: rotateY(180deg);
+}

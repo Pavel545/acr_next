@@ -37,7 +37,10 @@ export default function HeroMain() {
             <div className={s.content}>
                 <div className={s.heroHeading}>
                     <h1 className={'h1 ' + s.title}>
-                        Цифровое ускорение <br /> вашего Бизнеса
+                        создаем  <br />
+                        <span>
+                            сайты с нейросетями, <br /> мобильные приложения,   <br />и умные чат-боты
+                        </span>
                     </h1>
 
                     <CardWisit src="/img/eva1.png" name="Ева " post="ИИ-ассистент" textButton="Обсудить проект" />
@@ -48,37 +51,37 @@ export default function HeroMain() {
                         Услуги:
                     </p>
                     <div className={`${s.servicesList} ${!isExpanded ? s.collapsed : ''}`}>
-                        <ServicesCard 
-                            icon={<Icon1 className="iconS" />} 
-                            text="Разработка сайта" 
+                        <ServicesCard
+                            icon={<Icon1 className="iconS" />}
+                            text="Разработка сайта"
                             href="/services/web-development"
                             isGloballyExpanded={isExpanded}
                         />
-                        <ServicesCard 
-                            icon={<Icon2 className="iconS" />} 
-                            text="Умный чат-бот" 
+                        <ServicesCard
+                            icon={<Icon2 className="iconS" />}
+                            text="Умный чат-бот"
                             href="/services/ai-chatbot"
                             isGloballyExpanded={isExpanded}
                         />
-                        <ServicesCard 
-                            icon={<Icon3 className="iconS" />} 
-                            text="Мобильное приложение" 
+                        <ServicesCard
+                            icon={<Icon3 className="iconS" />}
+                            text="Мобильное приложение"
                             href="/services/mobile-app-development"
                             isGloballyExpanded={isExpanded}
                         />
-                        <ServicesCard 
-                            icon={<Icon4 className="iconS" />} 
-                            text="Дизайн" 
+                        <ServicesCard
+                            icon={<Icon4 className="iconS" />}
+                            text="Дизайн"
                             href="/services/design"
                             isGloballyExpanded={isExpanded}
                         />
-                        <ServicesCard 
-                            icon={<Icon5 className="iconS" />} 
-                            text="Маркетинг" 
+                        <ServicesCard
+                            icon={<Icon5 className="iconS" />}
+                            text="Маркетинг"
                             href="/services/marketing"
                             isGloballyExpanded={isExpanded}
                         />
-                        <ServicesCard 
+                        <ServicesCard
                             icon={<Icon6 className={`iconS ${!isExpanded ? s.rotated : ''}`} />}
                             onClick={handleToggle}
                             isGloballyExpanded={isExpanded}
