@@ -31,7 +31,7 @@ export const unbounded = localFont({
       style: 'normal',
     },
   ],
-  preload: false,
+  // preload: false,
   variable: '--second-family',
   display: 'swap',
 });

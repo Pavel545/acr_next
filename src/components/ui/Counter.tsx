@@ -23,10 +23,6 @@ export type CounterProps = {
 
   className?: string;
 
-  /**
-   * Если хочешь не только <span>, а например <div>:
-   * передай "span" | "div" | "p" и т.д.
-   */
   as?: "span" | "div" | "p";
 };
 

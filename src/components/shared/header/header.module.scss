@@ -1,66 +1,39 @@
 .header {
-    padding: 28px 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    transition: transform 0.4s ease-in-out;
+    padding: 20px 0;
+    transition: transform 0.4s ease;
 }
 
-.header_visible {
+.visible {
     transform: translateY(0);
 }
 
-.header_hidden {
+.hidden {
     transform: translateY(-100%);
 }
 
-.header_container {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 10px;
+.inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
 
-.header_scroll {
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
+    padding: 10px 15px;
+    border-radius: 12px;
+
     backdrop-filter: blur(12px);
     background: rgba(40, 38, 49, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Легкая обводка для усиления эффекта */
 }
 
-
-.social_links {
+/* LEFT */
+.left {
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
-.social_link_image {
-    transition: 300ms ease-in-out;
-    border-radius: var(--br);
-    fill: var(--belyy);
-}
-
-.social_link{
-    cursor: pointer;
-
-}
-
-.social_link:hover .social_link_image {
-    background: var(--zelenyy-2-osnovnoy);
-}
-
-.social_link:active .social_link_image {
-    background: var(--belyy);
-    fill: var(--zelenyy-2-osnovnoy) !important;
-}
 
 /* LOGO */
 .logo {
@@ -74,6 +47,13 @@
 
     /* показываем только область иконки */
     transition: clip-path 0.4s cubic-bezier(.4, 0, .2, 1);
+
+
+     @media (max-width: 500px) {
+        min-width: auto;
+        width: 180px;
+        
+    }
 }
 
 
@@ -178,99 +158,80 @@
 }
 
 
-.header_left,
-.header_right {
+
+/* RIGHT */
+.right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    position: relative;
 }
 
-
-// Добавьте эти стили в ваш header.module.scss
-
-.social_link_menu {
+/* SOCIALS */
+.socials {
     display: flex;
     align-items: center;
-    gap: 5px;
-    overflow: hidden;
+    justify-content: center;
+    gap: 6px;
+
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+
+    pointer-events: none;
+}
+
+.social {
+    opacity: 0;
+    transform: translateX(20px) scale(0.8);
+    transition: 0.3s ease;
+    transition-delay: calc(var(--i) * 0.05s);
     
-    .social_link {
-        opacity: 0;
-        transform: translateX(20px);
-        transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-        transition-delay: calc(var(--i) * 0.05s);
-    }
-    
-    &.open .social_link {
-        opacity: 1;
-        transform: translateX(0);
+    height: 40px;
+    width: 40px;
+    img{
+        transition: 300ms ease-in-out;
+        border-radius: 5px;
+        overflow: hidden;
     }
 }
 
-// Анимация для иконки меню
-.menu_icon {
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-    display: inline-flex;
-    
-    &.open {
-        transform: rotate(90deg);
-    }
-}
+.socials.open .social {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
 
-// Альтернативный вариант с более плавным появлением
-.social_link_menu {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    
-    .social_link {
-        opacity: 0;
-        transform: scale(0.8) translateX(20px);
-        transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
-        transition-delay: calc(var(--i) * 0.03s);
-        
-        // Добавляем анимацию при наведении даже в скрытом состоянии
-        pointer-events: none;
-    }
-    &.open .social_link {
-        opacity: 1;
-        transform: scale(1) translateX(0);
-        pointer-events: auto;
-       
-        // Каскадная анимация с задержкой при появлении
-        @for $i from 0 through 10 {
-            &:nth-child(#{$i + 1}) {
-                transition-delay: #{0.03 * ($i + 1)}s;
-            }
-        }
-    }
-    
-    // При закрытии - анимация в обратном порядке
-    &:not(.open) .social_link {
-        transition-delay: calc((10 - var(--i)) * 0.03s);
-    }
-}
 
-.menu_icon {
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-    display: inline-flex;
-    
     &:hover {
-        transform: scale(1.1);
-    }
-    
-    &:active {
-        transform: scale(0.95);
-    }
-    
-    &.open {
-        transform: rotate(90deg);
-        
-        &:hover {
-            transform: rotate(90deg) scale(1.1);
+        img {
+                background: var(--zelenyy-2-osnovnoy);
+    box-shadow: inset -2px -1px 20px #030701;
         }
     }
 }
 
+/* BURGER */
+.burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.burger.open {
+    transform: rotate(90deg);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .mobNo {
+        display: none !important;
+    }
+    .right {
+    display: none;
+}
+
+}

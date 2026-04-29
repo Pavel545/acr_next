@@ -14,11 +14,11 @@ interface ServicesCardProps {
     isMobile?: boolean; // 👈 добавили
 }
 
-export default function ServicesCard({
-    icon,
-    text,
-    href,
-    onClick,
+export default function ServicesCard({ 
+    icon, 
+    text, 
+    href, 
+    onClick, 
     isGloballyExpanded = true,
     isToggleButton = false,
     isMobile = false // 👈 добавили
@@ -27,7 +27,7 @@ export default function ServicesCard({
     const [localExpanded, setLocalExpanded] = useState(isGloballyExpanded);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const isFirstRender = useRef(true);
-    const isInteractive = !isMobile;
+const isInteractive = !isMobile;
     // Синхронизация с глобальным состоянием с задержкой для анимации
     useEffect(() => {
         if (isFirstRender.current) {
@@ -47,11 +47,11 @@ export default function ServicesCard({
         } else {
             // При скрытии ждем завершения анимации текста
             if (isMobile) {
-                timeoutRef.current = setTimeout(() => {
-                    setLocalExpanded(false);
-                }, 250);
+                return;
             }
-
+            timeoutRef.current = setTimeout(() => {
+                setLocalExpanded(false);
+            }, 250);
         }
 
         return () => {
@@ -64,7 +64,7 @@ export default function ServicesCard({
     // Определяем, показывать ли текст
     const shouldShowText = () => {
         if (isToggleButton) return false;
-        if (isMobile) return true;
+         if (isMobile) return true;
         if (isHovered) return true;
         return localExpanded;
     };
@@ -76,17 +76,17 @@ export default function ServicesCard({
         expanded: {
             gap: "20px",
             paddingRight: "13px",
-            transition: {
-                duration: 0.3,
-                ease: "easeInOut"
+            transition: { 
+                duration: 0.3, 
+                ease: "easeInOut" 
             }
         },
         collapsed: {
             gap: "0px",
             paddingRight: "13px",
-            transition: {
-                duration: 0.3,
-                ease: "easeInOut"
+            transition: { 
+                duration: 0.3, 
+                ease: "easeInOut" 
             }
         },
         hovered: {
@@ -95,42 +95,42 @@ export default function ServicesCard({
             paddingRight: "13px",
             boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
             scale: 1.02,
-            transition: {
-                duration: 0.2,
-                ease: "easeOut"
+            transition: { 
+                duration: 0.2, 
+                ease: "easeOut" 
             }
         }
     };
 
     // Анимации для текста
     const textVariants: Variants = {
-        initial: {
-            opacity: 0,
-            x: -20,
+        initial: { 
+            opacity: 0, 
+            x: -20, 
             maxWidth: 0,
             paddingRight: 0,
             marginRight: 0
         },
-        animate: {
-            opacity: 1,
-            x: 0,
+        animate: { 
+            opacity: 1, 
+            x: 0, 
             maxWidth: 300,
             paddingRight: "clamp(14px, 1.5vw, 54px)",
             marginRight: 0,
-            transition: {
-                duration: 0.3,
+            transition: { 
+                duration: 0.3, 
                 ease: "easeOut",
                 opacity: { duration: 0.2 }
             }
         },
-        exit: {
-            opacity: 0,
-            x: -20,
+        exit: { 
+            opacity: 0, 
+            x: -20, 
             maxWidth: 0,
             paddingRight: 0,
             marginRight: 0,
-            transition: {
-                duration: 0.25,
+            transition: { 
+                duration: 0.25, 
                 ease: "easeIn",
                 opacity: { duration: 0.15 }
             }
@@ -139,62 +139,62 @@ export default function ServicesCard({
 
     // Анимация для вращения иконки у кнопки-переключателя
     const iconVariants: Variants = {
-        expanded: {
+        expanded: { 
             rotate: 180,
             transition: { duration: 0.3, ease: "easeInOut" }
         },
-        collapsed: {
+        collapsed: { 
             rotate: 0,
             transition: { duration: 0.3, ease: "easeInOut" }
         }
     };
 
     const content = (
-        <motion.div
+        <motion.div 
             className={`${s.card} ${isHovered ? s.hovered : ''}`}
             onMouseEnter={() => isInteractive && setIsHovered(true)}
-            onMouseLeave={() => isInteractive && setIsHovered(false)}
+onMouseLeave={() => isInteractive && setIsHovered(false)}
             variants={cardVariants}
             initial="collapsed"
-            animate={
-                isMobile
-                    ? "expanded"
-                    : isHovered
-                        ? "hovered"
-                        : showText
-                            ? "expanded"
-                            : "collapsed"
-            }
+          animate={
+    isMobile
+        ? "expanded"
+        : isHovered
+        ? "hovered"
+        : showText
+        ? "expanded"
+        : "collapsed"
+}
             whileHover="hovered"
         >
-            <motion.div
+            <motion.div 
                 className={s.iconBox}
                 variants={isToggleButton ? iconVariants : undefined}
                 animate={isToggleButton ? (isGloballyExpanded ? "expanded" : "collapsed") : undefined}
             >
                 {icon}
             </motion.div>
-
+            
             <AnimatePresence mode="wait">
-                {showText && (
-                    <motion.p
-                        className={s.text}
-                        variants={isMobile ? undefined : textVariants}
-                        initial={isMobile ? false : "initial"}
-                        animate={isMobile ? false : "animate"}
-                        exit={isMobile ? undefined : "exit"}
-                    >
-                        {text}
-                    </motion.p>
-                )}
-            </AnimatePresence>
+    {showText && (
+        <motion.p
+            className={s.text}
+            variants={isMobile ? undefined : textVariants}
+            initial={isMobile ? false : "initial"}
+            animate={isMobile ? false : "animate"}
+            exit={isMobile ? undefined : "exit"}
+        >
+            {text}
+        </motion.p>
+    )}
+</AnimatePresence>
         </motion.div>
     );
 
     // Если это кнопка-переключатель
     if (isToggleButton) {
         return (
-            <motion.div
+            <motion.div 
                 className={`${s.cardWrapper} ${!isGloballyExpanded ? s.collapsed : ''}`}
                 onClick={onClick}
                 whileTap={{ scale: 0.95 }}

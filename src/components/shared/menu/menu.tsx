@@ -6,14 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 
-export default function Menu() {
-    const [isHovered, setIsHovered] = useState(false);
-
-
+export default function Menu({ isHovered, className }: { isHovered: boolean; className?: string }) {
 
     return (
-        <div className={s.mob_menu} onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}>
+        <div className={`${s.mob_menu} ${className}`}
+        >
             <nav className={s.navigation}>
                 {NAVIGATION_LINKS.map((link) => {
                     const IconComponent = link.icons;

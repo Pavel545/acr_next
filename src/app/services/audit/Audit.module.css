@@ -1,0 +1,266 @@
+/* Audit.module.css */
+
+/* Базовые стили (десктоп) */
+.info {
+    gap: 12px;
+}
+
+.mobIts {
+    display: none;
+}
+
+.title {
+    margin-bottom: 0.5rem;
+}
+
+.bottom {
+    display: flex;
+    gap: 90px;
+    align-items: center;
+    margin-top: auto;
+}
+
+.elGrid {
+    width: 100%;
+    height: 100%;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2vh;
+    margin-top: 100px;
+}
+
+.right {
+    background: url(/img/prisent/fon02.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.right .composits {
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Убедитесь, что gr2 — это grid */
+.gr2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+
+/* Типографика */
+.h2Gradient {
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.t20 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.t30 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.t16 {
+    font-size: 1rem;
+}
+
+.grey {
+    color: #6c757d;
+}
+
+.siniy {
+    color: #0066cc;
+    font-weight: 500;
+}
+
+.ulSin {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.ulSin li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.ulSin li::before {
+    content: "•";
+    color: #0066cc;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+}
+
+.but {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.but:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.container2 {
+    padding: 2rem;
+}
+
+.slide {
+    
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* ===== АДАПТАЦИЯ ===== */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+    .title {
+        margin-bottom: 32px;
+    }
+
+    .left {
+        gap: 28px;
+    }
+
+    .bottom {
+        gap: 40px;
+    }
+    
+    .container2 {
+        padding: 1.5rem;
+    }
+}
+
+/* Мобильные (до 768px) */
+@media (max-width: 768px) {
+    .gr2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .left {
+        gap: 24px;
+    }
+
+    .title {
+        margin-bottom: 20px;
+        height: auto;
+        background: url(/img/prisent/mob/4.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 16px;
+    }
+
+    .mobIts {
+        display: inline;
+    }
+
+    .title * {
+        color: white !important;
+        -webkit-text-fill-color: aliceblue;
+    }
+
+    .right {
+        display: none;
+    }
+    
+    .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        margin-top: 24px;
+    }
+
+    .info {
+        gap: 8px;
+        flex-direction: row;
+        align-items: baseline;
+    }
+    
+    .slide {
+        padding: 2rem 1rem;
+    }
+    
+    .t20 {
+        font-size: 1rem;
+    }
+    
+    .t30 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    .container2 {
+        padding: 0;
+    }
+
+    .group {
+        padding: 1rem;
+    }
+    
+    .title {
+        margin-bottom: 16px;
+        padding-top: 70px;
+    }
+    
+    .left {
+        gap: 10px;
+    }
+
+    .ulSin {
+        padding-left: 20px;
+    }
+
+    .ulSin li {
+        margin-bottom: 8px;
+    }
+
+    .bottom {
+        width: 100%;
+    }
+
+    .info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .slide {
+        padding-bottom: 60px;
+    }
+    
+    .but {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+}

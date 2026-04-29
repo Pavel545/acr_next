@@ -8,6 +8,7 @@ import Decor6 from '@/assets/images/services3D/4.svg';
 import Decor7 from '@/assets/images/services3D/5.svg';
 import Decor3 from '@/assets/images/services3D/6.svg';
 import { SectionTitle } from '@/components/ui/TitleReveal/TitleReveal';
+import Link from 'next/link';
 
 export default function Services() {
 
@@ -27,7 +28,7 @@ export default function Services() {
             </div>
 
             <div className={s.servicesItems}>
-                <div className={s.servicesItem}>
+                <Link href={"/services/audit"} className={s.servicesItem}>
                     <div className={s.servicesItemBg}>
                         <div className={s.lightSpot1}></div>
                         <div className={s.lightSpot2}></div>
@@ -50,9 +51,9 @@ export default function Services() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </Link>
 
-                <div className={s.servicesItem}>
+                <Link href={"/services/website-policy"} className={s.servicesItem}>
                     <div className={s.servicesItemBg}>
                         <div className={s.lightSpot1}></div>
                         <div className={s.lightSpot2}></div>
@@ -74,7 +75,7 @@ export default function Services() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </Link>
 
                 <div className={s.servicesItem}>
                     <div className={s.servicesItemBg}>

@@ -4,6 +4,7 @@ import { inter, unbounded } from './fonts';
 
 import { Header } from "@/components/shared/header/header";
 import { Footer } from "@/components/shared/footer/footer";
+import { Providers } from "./providers";
 
 
 
@@ -160,7 +161,9 @@ export default function RootLayout({
     <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
       <body >
         <Header/>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         <Footer /> 
       </body>
     </html>
