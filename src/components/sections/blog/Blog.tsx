@@ -7,38 +7,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import post from "@/data/blog.json";
+import { mapPostToCard, Post } from '@/types/blog';
 
 export default function Blog() {
-    const blogPosts = [
-        {
-            id: 1,
-            type: 'Статья',
-            date : '20/03/2026',
-            time: '5 мин.',
-            title :"Ускорение Сайта в 2 Раза",
-            textMini:"Медленный сайт — это потерянные клиенты и низкие позиции в поисковиках. Мы устраним тормоза. Используйте передовые технологии и инновационные инструменты, чтобы сделать ваш бизнес быстрее, проще и прибыльнее ",
-            img: "/img/blog/1.jpg",
-        },
-        {
-            id: 2,
-            type: 'Статья',
-            date : '20/03/2026',
-            time: '5 мин.',
-            title :"Ускорение Сайта в 2 Раза",
-            textMini:"Медленный сайт — это потерянные клиенты и низкие позиции в поисковиках. Мы устраним тормоза. Используйте передовые технологии и инновационные инструменты, чтобы сделать ваш бизнес быстрее, проще и прибыльнее ",
-            img: "/img/blog/2.jpg",
-        },
-        {
-            id: 3,
-            type: 'Статья',
-            date : '20/03/2026',
-            time: '5 мин.',
-            title :"Ускорение Сайта в 2 Раза",
-            textMini:"Медленный сайт — это потерянные клиенты и низкие позиции в поисковиках. Мы устраним тормоза. Используйте передовые технологии и инновационные инструменты, чтобы сделать ваш бизнес быстрее, проще и прибыльнее ",
-            img: "/img/blog/3.jpg",
-        }
-    ]
-
+    const typedPosts = post as Post[];
+    const blogPosts = typedPosts
+        .slice(0, 3)
+        .map(mapPostToCard);
     return (
         <section className={s.blog}>
             <div className='container'>

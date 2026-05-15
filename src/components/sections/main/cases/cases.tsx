@@ -9,31 +9,25 @@ import s from './cases.module.css'
 const cases = [
     {
         id: 1,
-        title: 'Цифровая экосистема девелопера 360° для строительной компании',
-        tags: ['Продажи', 'Сопровождение', 'Комьюнити', 'Дожим'],
+        name: "ЧАТ-БОТ + САЙТ ВНУТРИ MAX",
+        title: 'Пациенты всегда могут записаться на прием - даже при ограничении мобильного интернета',
+        tags: ['Привлечение', 'Сервис', 'Лояльность', 'Конверсия', 'Аналитика'],
         goal:
-            'Автоматизировать первичный контакт с клиентами, снизить нагрузку на колл-центр и ускорить цикл сделки',
+            'Обеспечить пациентам бесперебойную онлайн-запись 24/7 даже при слабом интернете, разгрузить администраторов и увеличить конверсию в реальную запись на 20–40% за счёт автоматизации и ИИ',
         results: [
-            'Конверсия лидов в сделку: +42%',
-            'Время отклика: с 40 мин до 5 сек',
-            'Нагрузка на колл-центр: −35%',
-            'Экономия ФОТ: 150–200 тыс ₽',
+            'Онлайн-запись 24/7 без звонков',
+            'Автоматический сбор заявок даже вне рабочего времени ',
+            'Полное закрытие «дыр» в расписании',
+            'Снижение нагрузки на администраторов',
+            'Цифровая медкарта и автоматические напоминания',
+            'Геймификация и персональные награды от ИИ (особенно для детей)',
+            'ИИ-персонализация и предиктивная аналитика',
+            'Высокая скорость и полная независимость от качества интернета'
         ],
-        image: '/img/case/1.jpg',
-    },
-    {
-        id: 2,
-        title: 'CRM + автоматизация маркетинга для B2B-девелопера',
-        tags: ['CRM', 'Маркетинг', 'Автоматизация'],
-        goal:
-            'Собрать разрозненные каналы лидогенерации в единую систему и сократить потери заявок',
-        results: [
-            'Рост квалифицированных лидов: +37%',
-            'Снижение CPL: −18%',
-            'Автоматизация 80% ручных операций',
-        ],
-        image: '/img/case/2.jpg',
-    },
+        price: 'Стоимость интеграции «под ключ»:<b> 200 00 ₽</b>',
+        image: '/img/case/3.jpg',
+        presentation: '/docs/КП Стоматология.pdf'
+    }
 ]
 
 /* ---------- ANIMATION VARIANTS ---------- */
@@ -58,6 +52,7 @@ const containerStagger: Variants = {
     },
 }
 
+
 const imageVariant: Variants = {
     hidden: { opacity: 0, scale: 1.08 },
     show: {
@@ -73,20 +68,28 @@ const imageVariant: Variants = {
 }
 
 export default function Cases() {
-    const [index, setIndex] = useState(0)
-    const [isMobile, setIsMobile] = useState(false)
-    const caseItem = cases[index]
-
+    const [index, setIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+    const caseItem = cases[index];
+    const [showAllResults, setShowAllResults] = useState(false)
+    const [goalOpen, setGoalOpen] = useState(false)
+    const [resultsOpen, setResultsOpen] = useState(false)
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768)
         }
-        
+
         checkMobile()
         window.addEventListener('resize', checkMobile)
-        
+
         return () => window.removeEventListener('resize', checkMobile)
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        setShowAllResults(false)
+        setGoalOpen(false)
+        setResultsOpen(false)
+    }, [index])
 
     const nextSlide = () => {
         setIndex((prev) => (prev + 1) % cases.length)
@@ -94,6 +97,39 @@ export default function Cases() {
 
     const prevSlide = () => {
         setIndex((prev) => (prev - 1 + cases.length) % cases.length)
+    }
+
+    const visibleResults = showAllResults
+        ? caseItem.results
+        : caseItem.results.slice(0, 3)
+
+    const hasHiddenResults = caseItem.results.length > 3
+
+    const accordionBlock: Variants = {
+        closed: {
+            height: 0,
+            opacity: 0,
+            transition: { duration: 0.3 }
+        },
+        open: {
+            height: 'auto',
+            opacity: 1,
+            transition: { duration: 0.4 }
+        }
+    }
+    const accordionVariants: Variants = {
+        collapsed: {
+            height: 0,
+            opacity: 0,
+            marginTop: 0,
+            transition: { duration: 0.3 }
+        },
+        open: {
+            height: 'auto',
+            opacity: 1,
+            marginTop: 8,
+            transition: { duration: 0.4 }
+        }
     }
 
     return (
@@ -130,7 +166,7 @@ export default function Cases() {
                     <div className={s.left}>
                         <div>
                             <h2 className={s.caseNumber}>
-                                КЕЙС №{String(index + 1).padStart(2, '0')}
+                                {caseItem.name}
                             </h2>
 
                             <AnimatePresence mode="wait">
@@ -162,46 +198,122 @@ export default function Cases() {
                                 exit="hidden"
                             >
                                 {/* GOAL */}
-                                <motion.div
-                                    className={s.textBlock}
-                                    variants={fadeUp}
-                                >
-                                    <p className={s.label}>Цель:</p>
-                                    <p className={s.text}>{caseItem.goal}</p>
+                                <motion.div className={s.textBlock} variants={fadeUp}>
+                                    <button
+                                        className={`${s.accordionHeader} ${goalOpen ? s.open : ''}`}
+                                        onClick={() => isMobile && setGoalOpen(prev => !prev)}
+                                    >
+                                        <span className={s.label}>Цель:</span>
+                                        {isMobile && (
+                                            <span className={s.accordionIcon}>
+                                                {goalOpen ? '−' : '+'}
+                                            </span>
+                                        )}
+                                    </button>
+
+                                    <AnimatePresence initial={false}>
+                                        {(!isMobile || goalOpen) && (
+                                            <motion.div
+                                                variants={accordionBlock}
+                                                initial={isMobile ? "closed" : false}
+                                                animate="open"
+                                                exit="closed"
+                                            >
+                                                <p className={s.text}>{caseItem.goal}</p>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </motion.div>
 
                                 {/* RESULTS */}
-                                <motion.div
-                                    className={s.textBlock}
-                                    variants={fadeUp}
-                                >
-                                    <p className={s.label}>Результат:</p>
-                                    <motion.ul
-                                        className={s.list}
-                                        variants={containerStagger}
+                                <motion.div className={s.textBlock} variants={fadeUp}>
+                                    <button
+                                        className={`${s.accordionHeader} ${resultsOpen ? s.open : ''}`}
+                                        onClick={() => isMobile && setResultsOpen(prev => !prev)}
                                     >
-                                        {caseItem.results.map((item) => (
-                                            <motion.li
-                                                key={item}
-                                                variants={fadeUp}
+                                        <span className={s.label}>Результат:</span>
+                                        {isMobile && (
+                                            <span className={s.accordionIcon}>
+                                                {resultsOpen ? '−' : '+'}
+                                            </span>
+                                        )}
+                                    </button>
+
+                                    <AnimatePresence initial={false}>
+                                        {(!isMobile || resultsOpen) && (
+                                            <motion.div
+                                                variants={accordionBlock}
+                                                initial={isMobile ? "closed" : false}
+                                                animate="open"
+                                                exit="closed"
                                             >
-                                                {item}
-                                            </motion.li>
-                                        ))}
-                                    </motion.ul>
+                                                <motion.ul className={s.list} variants={containerStagger}>
+                                                    {visibleResults.map((item) => (
+                                                        <motion.li key={item} variants={fadeUp}>
+                                                            {item}
+                                                        </motion.li>
+                                                    ))}
+                                                </motion.ul>
+
+                                                <AnimatePresence initial={false}>
+                                                    {showAllResults && hasHiddenResults && (
+                                                        <motion.ul
+                                                            className={s.list}
+                                                            variants={accordionVariants}
+                                                            initial="collapsed"
+                                                            animate="open"
+                                                            exit="collapsed"
+                                                        >
+                                                            {caseItem.results.slice(3).map((item) => (
+                                                                <motion.li key={item} variants={fadeUp}>
+                                                                    {item}
+                                                                </motion.li>
+                                                            ))}
+                                                        </motion.ul>
+                                                    )}
+                                                </AnimatePresence>
+
+                                                {hasHiddenResults && (
+                                                    <button
+                                                        className={s.moreBtn}
+                                                        onClick={() => setShowAllResults(prev => !prev)}
+                                                    >
+                                                        {showAllResults ? 'Скрыть' : 'Показать ещё'}
+                                                    </button>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </motion.div>
                             </motion.div>
                         </AnimatePresence>
 
-                        <div className={s.pagination}>
-                            <span className={s.active}>
-                                {String(index + 1).padStart(2, '0')}
-                            </span>
-                            <span>—</span>
-                            <span className={s.total}>
-                                {String(cases.length).padStart(2, '0')}
-                            </span>
-                        </div>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={caseItem.id + '-menu'}
+                                className={s.menu}
+                                variants={fadeUp}
+                                initial="hidden"
+                                animate="show"
+                                exit="hidden"
+                            >
+                                <p
+                                    className={s.price}
+                                    dangerouslySetInnerHTML={{ __html: caseItem.price }}
+                                />
+
+                                <div className={s.buttBOX}>
+                                    <button data-popup
+                                        data-popup-title="Хочу так же" data-popup-service={caseItem.name} className="butt">
+                                        Хочу так же
+                                    </button>
+                                    <a target='_blank' href={caseItem.presentation} className={`butt ${s.butt}`}>
+                                        Скачать презентацию
+                                    </a>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+
                     </div>
 
                     {/* RIGHT SIDE */}
@@ -240,23 +352,34 @@ export default function Cases() {
                                 </motion.div>
                             </AnimatePresence>
                         </div>
-
-                        <div className={s.navigation}>
-                            <button 
-                                onClick={prevSlide} 
-                                className={s.arrowBtn}
-                                aria-label="Previous case"
-                            >
-                                ←
-                            </button>
-                            <button 
-                                onClick={nextSlide} 
-                                className={s.nextBtn}
-                                aria-label="Next case"
-                            >
-                                {isMobile ? 'Следующий →' : 'Следующий кейс →'}
-                            </button>
+                        <div className={s.navigationBox}>
+                            <div className={s.pagination}>
+                                <span className={s.active}>
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                <span>—</span>
+                                <span className={s.total}>
+                                    {String(cases.length).padStart(2, '0')}
+                                </span>
+                            </div>
+                            <div className={s.navigation}>
+                                <button
+                                    onClick={prevSlide}
+                                    className={s.arrowBtn}
+                                    aria-label="Previous case"
+                                >
+                                    ←
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className={s.nextBtn}
+                                    aria-label="Next case"
+                                >
+                                    {isMobile ? 'Следующий →' : 'Следующий кейс →'}
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

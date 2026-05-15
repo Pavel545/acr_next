@@ -4,14 +4,9 @@ import { VideoSection } from '@/components/ui/VideoSection/VideoSection';
 import s from './hero.module.css';
 import CardWisit from '@/components/ui/CardWisit/CardWisit';
 import ServicesCard from '@/components/ui/ServicesCard/ServicesCard';
-
-import Icon1 from '@/assets/icons/services/1.svg';
-import Icon2 from '@/assets/icons/services/2.svg';
-import Icon3 from '@/assets/icons/services/3.svg';
-import Icon4 from '@/assets/icons/services/4.svg';
-import Icon5 from '@/assets/icons/services/5.svg';
 import Icon6 from '@/assets/icons/services/6.svg';
 import { useMediaQuery } from '@/lib/isMobile';
+import { SERVICES_DATA } from '@/config/constants/services';
 
 export default function HeroMain() {
     const [isExpanded, setIsExpanded] = useState<boolean>(true);
@@ -19,6 +14,7 @@ export default function HeroMain() {
     const [isCardFloating, setIsCardFloating] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
     const isMobile = useMediaQuery("(max-width: 768px)")
+
     // Авто-сворачивание через 3 секунды после монтирования (только 1 раз)
     useEffect(() => {
         if (!hasAutoCollapsed) {
@@ -38,7 +34,6 @@ export default function HeroMain() {
         const observer = new IntersectionObserver(
             (entries) => {
                 const [entry] = entries;
-                // Карточка становится плавающей, когда секция полностью выходит из viewport
                 setIsCardFloating(!entry.isIntersecting);
             },
             {
@@ -60,6 +55,9 @@ export default function HeroMain() {
         setIsExpanded(!isExpanded);
     };
 
+    // Определяем, показывать ли кнопку переключения
+    const showToggleButton = !isMobile;
+
     return (
         <VideoSection
             className={s.hero}
@@ -76,57 +74,34 @@ export default function HeroMain() {
                         </span>
                     </h1>
 
-                    {!isMobile && <CardWisit
-                        src="/img/eva1.png"
-                        name="Ева"
-                        post="ИИ-ассистент"
-                        textButton="Обсудить проект"
-                        isFloating={isCardFloating}
-                    />}
+                    {!isMobile && (
+                        <CardWisit
+                            src="/img/eva1.png"
+                            name="Ева"
+                            post="ИИ-ассистент"
+                            textButton="Обсудить проект"
+                            isFloating={isCardFloating}
+                        />
+                    )}
                 </div>
 
                 <div className={s.services}>
-                    <p className={s.servicesTitle}>
-                        Услуги:
-                    </p>
+                    <p className={s.servicesTitle}>Услуги:</p>
                     <div className={`${s.servicesList} ${!isExpanded ? s.collapsed : ''}`}>
-                        <ServicesCard
-                            icon={<Icon1 className="iconS" />}
-                            text="Разработка сайта"
-                            href="/services/web-development"
-                            isGloballyExpanded={isMobile ? true : isExpanded}
-                            isMobile={isMobile}
+                        {/* Рендерим все сервисы из константы */}
+                        {SERVICES_DATA.filter(s => s.id !== 'audit' && s.id !== 'website-policy').map((service) => (
+                            <ServicesCard
+                                key={service.id}
+                                icon={<service.icon className="iconS" />}
+                                text={service.name}
+                                href={service.href}
+                                isGloballyExpanded={isMobile ? true : isExpanded}
+                                isMobile={isMobile}
+                            />
+                        ))}
 
-                        />
-                        <ServicesCard
-                            icon={<Icon2 className="iconS" />}
-                            text="Умный чат-бот"
-                            href="/services/ai-chatbot"
-                            isGloballyExpanded={isMobile ? true : isExpanded}
-                            isMobile={isMobile}
-                        />
-                        <ServicesCard
-                            icon={<Icon3 className="iconS" />}
-                            text="Мобильное приложение"
-                            href="/services/mobile-app-development"
-                            isGloballyExpanded={isMobile ? true : isExpanded}
-                            isMobile={isMobile}
-                        />
-                        <ServicesCard
-                            icon={<Icon4 className="iconS" />}
-                            text="Дизайн"
-                            href="/services/design"
-                            isGloballyExpanded={isMobile ? true : isExpanded}
-                            isMobile={isMobile}
-                        />
-                        <ServicesCard
-                            icon={<Icon5 className="iconS" />}
-                            text="Маркетинг"
-                            href="/services/marketing"
-                            isGloballyExpanded={isMobile ? true : isExpanded}
-                            isMobile={isMobile}
-                        />
-                        {! isMobile && (
+                        {/* Кнопка-переключатель (только если не мобилка) */}
+                        {showToggleButton && (
                             <ServicesCard
                                 icon={<Icon6 className={`iconS ${!isExpanded ? s.rotated : ''}`} />}
                                 onClick={handleToggle}

@@ -1,4 +1,4 @@
-import styles from './Audit.module.css';
+import styles from '../services.module.css';
 
 export default function Audit() {
     return (
@@ -71,7 +71,7 @@ export default function Audit() {
                 </div>
 
                 <div className={`${styles.elGrid} ${styles.right}`}>
-                    <img className={styles.composits} src="/img/prisent/6.png" alt="Аудит" />
+                    <img className={styles.composits} src="/img/presa/6.png" alt="Аудит" />
                 </div>
             </div>
         </section>

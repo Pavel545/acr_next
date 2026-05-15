@@ -1,0 +1,71 @@
+.BreadCrumbs {
+    padding: 16px 0;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.separator {
+    color: var(--siniy);
+
+}
+
+.separator.dark {
+    color: var(--siniy);
+}
+
+.link {
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--seryy);
+}
+
+.link:hover {
+    color: var(--temnyy);
+}
+
+.link:active {
+    color: var(--siniy);
+}
+
+.link.dark {
+    color: var(--temnyy-2);
+
+}
+
+.link.dark:hover {
+    color: var(--siniy-1);
+}
+
+.current {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--seryy);
+    cursor: default;
+}
+
+.current.dark {
+    color: var(--temnyy-2);
+}
+
+.link.dark {
+    color: var(--temnyy-2);
+
+}

@@ -1,0 +1,295 @@
+/* Base styles */
+.container2 {
+  padding: 2rem;
+  padding-top: 110px;
+}
+
+.slide {
+  position: relative;
+}
+
+
+
+.tGradient {
+  background: linear-gradient(45deg, var(--siniy), var(--goluboy));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.t20 {
+  font-size: 20px;
+}
+
+.t30 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.t16 {
+  font-size: 16px;
+}
+
+.grey {
+  color: var(--seryy);
+  opacity: 0.8;
+}
+
+.siniy {
+  color: var(--siniy);
+}
+
+/* Grid layout */
+.gr2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.elGrid {
+  width: 100%;
+  height: 100%;
+}
+
+/* Left section */
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+/* Right section */
+.right {
+  background: url(/img/presa/fon02.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.right .composits {
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Groups */
+.group {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.info {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Bottom section */
+.bottom {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Lists */
+.ulSin {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.ulSin li {
+  padding-bottom: 10px;
+}
+
+/* Fos Box */
+.fosBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f5f7fa;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-top: 10px;
+  flex-direction: row !important;
+}
+
+/* Button */
+.but {
+  background: var(--siniy);
+  color: var(--belyy);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.but:hover {
+  background: var(--temno-siniy);
+  transform: translateY(-2px);
+}
+
+.but b {
+  font-weight: 700;
+}
+
+/* Responsive Design */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .title {
+    margin-bottom: 32px;
+  }
+
+  .left {
+    gap: 28px;
+  }
+
+  .h2 {
+    font-size: 36px;
+  }
+
+  .t30 {
+    font-size: 26px;
+  }
+
+  .t20 {
+    font-size: 18px;
+  }
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .gr2 {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .left {
+    gap: 24px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 24px;
+  }
+
+  .info {
+    gap: 8px;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .title {
+    height: 80vh;
+    background: url(/img/presa/mob/4.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 16px;
+  }
+
+  .title * {
+    color: white !important;
+    -webkit-text-fill-color: aliceblue;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .h2 {
+    font-size: 32px;
+  }
+
+  .t30 {
+    font-size: 24px;
+  }
+
+  .t20 {
+    font-size: 18px;
+  }
+}
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .container2 {
+    padding: 0;
+  }
+
+  .group {
+    padding: 1.5vw;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    padding-top: 90px;
+  }
+
+  .left {
+    gap: 10px;
+  }
+
+  .ulSin {
+    padding-left: 20px;
+  }
+
+  .ulSin li {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .bottom {
+    width: 100%;
+  }
+
+  .info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .slide {
+    padding-bottom: 60px;
+  }
+
+  .h2 {
+    font-size: 28px;
+  }
+
+  .t30 {
+    font-size: 20px;
+  }
+
+  .t20 {
+    font-size: 16px;
+  }
+
+  .fosBox {
+    flex-direction: column !important;
+    gap: 15px;
+  }
+
+  .but {
+    width: 100%;
+  }
+}

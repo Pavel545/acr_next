@@ -1,12 +1,18 @@
-import { SERVISES_LINKS, SOCIAL_LINKS } from "@/config/constants";
+"use client"
+
+import { SOCIAL_LINKS } from "@/config/constants";
 import s from "./footer.module.css";
 import Image from "next/image";
 import FosFot from "@/components/ui/fosFot/fosFot";
+import { SERVICES_DATA } from "@/config/constants/services";
+import MobMenu from "@/components/ui/MobMenu/MobMenu";
+import { useMediaQuery } from "@/lib/isMobile";
 
 
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const isMobile = useMediaQuery("(max-width: 768px)")
 
     return (
         <footer className={s.footer}>
@@ -34,7 +40,7 @@ export const Footer = () => {
                         <div>
                             <h3 className="h3">Услуги</h3>
                             <nav className={s.footLinks}>
-                                {SERVISES_LINKS.map((e, i) => (
+                                {SERVICES_DATA.map((e, i) => (
                                     <a key={i} className={s.footLink} href={e.href}>{e.name}</a>
                                 ))}
                             </nav>
@@ -62,6 +68,7 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
+            {isMobile && <MobMenu/> }
         </footer>
     )
 }

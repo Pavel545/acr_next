@@ -1,0 +1,58 @@
+.basa{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    margin: 10px;
+    z-index: 99999;
+    overflow: hidden;
+}
+
+
+.body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr ;
+    justify-items: center;
+    align-items: center;
+
+    // background: var(--belyy);
+    border-radius: var(--br);
+    overflow: hidden;
+    width: 100%;
+    min-height: 60px;
+    * {
+        z-index: 9;
+        position: relative;
+    }
+}
+
+.body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    background: var(--belyy);
+    border-radius: inherit;
+
+    z-index: 0!important;
+
+    mask:
+        radial-gradient(40px at 50% center, transparent 98%, black 100%),
+        linear-gradient(black, black);
+
+    mask-composite: intersect;
+}
+.menuItem{
+    width: 55px;
+    height: 44px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.active{
+    background: var(--zelenyy-2-osnovnoy);
+}

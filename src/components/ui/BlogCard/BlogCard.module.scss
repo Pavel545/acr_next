@@ -3,7 +3,10 @@
 
 .blogCardHeader {
     position: relative;
-height: 380px;
+    height: 380px;
+    overflow: hidden;
+
+    border-radius: var(--br);
 }
 
 
@@ -31,6 +34,9 @@ height: 380px;
     align-items: center;
     position: relative;
     z-index: 2;
+
+    background: #9a999900;
+    backdrop-filter: blur(5px);
 }
 
 
@@ -84,7 +90,7 @@ height: 380px;
     color: var(--seryy);
 }
 
-.blogCardContent{
+.blogCardContent {
     padding: 15px 0;
 
     display: flex;

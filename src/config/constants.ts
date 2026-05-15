@@ -12,15 +12,6 @@ export const NAVIGATION_LINKS = [
   { icons: Icon5 ,name: "Контакты", href: "/contacts" },
 ];
 
-export const SERVISES_LINKS = [
-  { name: "Разработка мобильного приложение", href: "/about" },
-  { name: "Умный чат-бот", href: "/services" },
-  { name: "Разработка сайта", href: "/stocks" },
-  { name: "Маркетинг", href: "/team" },
-  { name: "Аудит сайта", href: "/contacts" },
-  { name: "Политика сайта", href: "/contacts" },
-  { name: "Дизайн", href: "/contacts" },
-];
 
 
 export const SOCIAL_LINKS = [

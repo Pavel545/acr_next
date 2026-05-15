@@ -11,8 +11,10 @@ export default function Home() {
   return (
     <main>
       <HeroMain />
-      <Cooperation />
+      <div className="swap">
+        <Cooperation />
       <ServicesG />
+      </div>
       <Cases />
       <Advantages />
       <Technologies />

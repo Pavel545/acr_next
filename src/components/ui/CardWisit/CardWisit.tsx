@@ -2,18 +2,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import s from "./CardWisit.module.css";
 
-export default function CardWisit({ 
-    src, 
-    name, 
-    post, 
-    textButton, 
-    isFloating = false 
-}: { 
-    src: string, 
-    name: string, 
-    post: string, 
+export default function CardWisit({
+    src,
+    name,
+    post,
+    textButton,
+    isFloating = false
+}: {
+    src: string,
+    name: string,
+    post: string,
     textButton: string,
-    isFloating?: boolean 
+    isFloating?: boolean
 }) {
     const [isCompact, setIsCompact] = useState(false);
 
@@ -31,8 +31,8 @@ export default function CardWisit({
     return (
         <div className={`${s.card} ${isCompact ? s.compact : ''} ${isFloating ? s.floating : ''}`} onClick={handleClick}>
             <div className={s.cardImgBox}>
-                <Image 
-                    className={s.cardImg} 
+                <Image
+                    className={s.cardImg}
                     src={src}
                     alt={name}
                     width={isCompact ? 40 : 142}
@@ -43,7 +43,8 @@ export default function CardWisit({
                 <div className={s.cardContent}>
                     <h3 className={s.name}>{name}</h3>
                     <p className={s.post}>{post}</p>
-                    <button className={`${s.button} butt`}>
+                    <button data-popup
+                        data-popup-title="Обсудить проект" className={`${s.button} butt`}>
                         {textButton}
                     </button>
                 </div>

@@ -130,7 +130,7 @@ button {
     padding: 10px;
     background: var(--zelenyy-2-osnovnoy);
 
-    font-family: var(--font-family);
+    font-family: var(--second-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
@@ -138,6 +138,7 @@ button {
     color: var(--temnyy);
 
     transition: 300ms all ease;
+    font-weight: 500;
 }
 .butt2:hover {
   background: var(--zelenyy-5);
@@ -179,4 +180,99 @@ button {
 .siniy {
   all: unset;
   color: var(--siniy);
+}
+
+/* === Временные стили start  */
+
+.slide {
+  margin-top: 100px;
+  position: relative;
+  min-height: 100vh;
+}
+/* === Временные стили end   */
+
+
+
+.erPage {
+  height: 100vh;
+}
+
+
+.erPageContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  gap: 5vh;
+  position: relative;
+}
+
+
+.erPageContainer .h1{
+  color: var(--temnyy);
+  text-align: center;
+}
+
+
+
+.erPageContainer *{
+  z-index: 9;
+  position: relative;
+}
+.err404{
+  position: absolute;
+  z-index: 5;
+
+  pointer-events: none;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+
+  top: 10vh;
+}
+
+
+@media screen and (max-width: 767px) {
+  .erPageContainer .h1{
+ font-size: 20px;
+}
+
+.err404{
+  top: 30%;
+}
+}
+
+
+
+.swap {
+  display: flex;
+  flex-direction: column;
+}
+
+/* desktop — как есть */
+@media (min-width: 769px) {
+  .swap {
+    flex-direction: column;
+  }
+
+  #cooperation {
+    order: 1;
+  }
+
+  #ServicesMobile {
+    order: 2;
+  }
+}
+
+/* mobile — меняем местами */
+@media (max-width: 768px) {
+  #cooperation {
+    order: 2;
+  }
+
+  #ServicesMobile {
+    order: 1;
+  }
 }

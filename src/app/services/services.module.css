@@ -34,7 +34,7 @@
 }
 
 .right {
-    background: url(/img/prisent/fon02.jpg);
+    background: url(/img/presa/fon02.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -173,7 +173,7 @@
     .title {
         margin-bottom: 20px;
         height: auto;
-        background: url(/img/prisent/mob/4.png);
+        background: url(/img/presa/mob/4.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

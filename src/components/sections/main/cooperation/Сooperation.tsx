@@ -67,7 +67,7 @@ export default function Cooperation() {
     };
 
     return (
-        <section className={s.cooperation} ref={ref}>
+        <section className={s.cooperation} id='cooperation' ref={ref}>
             <div className={s.decore}>
                 <svg width="1920" height="752" viewBox="0 0 1920 752" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 411.927C0 411.927 326.615 805.12 527 742C762.341 667.869 755.25 2.29776 998.28 2.50005C1207.32 2.67404 1233.68 393.497 1441.75 368.89C1587.5 351.654 1613.5 137.815 1759.6 125.793C1908.41 113.548 2106 322.365 2106 322.365" stroke="#DCFF5C" strokeWidth="5" strokeLinecap="round" />

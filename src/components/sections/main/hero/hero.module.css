@@ -119,6 +119,9 @@
         font-size: 28px;
         text-align: start;
     }
+    .services {
+        display: none;
+    }
 
     .content{
             padding-bottom: 10vh;

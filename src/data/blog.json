@@ -1,0 +1,291 @@
+[
+    {
+        "meta": {
+            "id": "post_1704287423",
+            "slug": "pochemu-biznes-otkazyvaetsya-ot-mobilnykh-prilozheniy-2026",
+            "type": "Статья",
+            "title":"Почему бизнес отказывается от мобильных приложений в 2026 — тренд Web Apps",
+            "textMini":"Более 70% пользователей не скачивают приложения. Узнайте, как Mini Apps в Telegram и VK экономят миллионы и повышают конверсию.",
+            "preview_image": "/img/blog/1/prev.jpg",
+            "alternative_types": [
+                "novost",
+                "blog"
+            ],
+            "primary_type": "statya",
+            "published_at": "2026-05-04T10:00:00+03:00",
+            "updated_at": "2026-05-04T15:30:00+03:00",
+            "time": "5 мин.",
+            "views_count": 1247,
+            "is_pinned": false
+        },
+        "seo": {
+            "title": "Почему бизнес отказывается от мобильных приложений в 2026 — тренд Web Apps",
+            "description": "Более 70% пользователей не скачивают приложения. Узнайте, как Mini Apps в Telegram и VK экономят миллионы и повышают конверсию.",
+            "keywords": [
+                "web apps",
+                "mini apps",
+                "telegram",
+                "2026",
+                "мобильные приложения",
+                "бизнес"
+            ],
+            "og_image": "https://example.com/images/web-apps-trend-2026.jpg"
+        },
+        "content": {
+            "version": "1.0",
+            "blocks": [
+                {
+                    "id": "block_1",
+                    "type": "heading",
+                    "attrs": {
+                        "level": 3
+                    },
+                    "content": [
+                        {
+                            "text": "Почему в 2026 году бизнес массово отказывается от дорогих мобильных приложений?",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_2",
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "Спойлер: пользователи просто устали их скачивать. По последним данным аналитиков, более ",
+                            "marks": []
+                        },
+                        {
+                            "text": "70% людей",
+                            "marks": [
+                                {
+                                    "type": "bold"
+                                }
+                            ]
+                        },
+                        {
+                            "text": " закрывают страницу, если для заказа товара или услуги их заставляют устанавливать новое приложение из App Store или Google Play.",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_3",
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "Главный ИТ-тренд, который захватил рынок — это Web Apps (Мини-приложения) внутри Telegram и ВКонтакте. 🚀",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_4",
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "Вместо того чтобы тратить миллионы на разработку под iOS и Android, умные компании создают полноценные магазины, системы бронирования и личные кабинеты прямо внутри мессенджеров.",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_5",
+                    "type": "heading",
+                    "attrs": {
+                        "level": 3
+                    },
+                    "content": [
+                        {
+                            "text": "В чем польза и выгода для вашего бизнеса?",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_6",
+                    "type": "bulletList",
+                    "content": [
+                        {
+                            "id": "list_item_1",
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "Никаких барьеров: ",
+                                            "marks": [
+                                                {
+                                                    "type": "bold"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "Клиент открывает ваш магазин в Telegram или VK в один клик. Ему не нужно ничего скачивать или регистрироваться — мессенджер сам передаст нужные данные.",
+                                            "marks": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "list_item_2",
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "Экономия бюджета и времени: ",
+                                            "marks": [
+                                                {
+                                                    "type": "bold"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "Разработка Mini App стоит в разы дешевле классического приложения, а запуск занимает недели, а не месяцы.",
+                                            "marks": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "list_item_3",
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "Свобода от санкций и модерации: ",
+                                            "marks": [
+                                                {
+                                                    "type": "bold"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "Вам не нужно бояться, что ваше приложение удалят из магазинов Apple или Google, и не нужно платить им 30% комиссии.",
+                                            "marks": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "list_item_4",
+                            "type": "listItem",
+                            "content": [
+                                {
+                                    "type": "paragraph",
+                                    "content": [
+                                        {
+                                            "text": "Идеальная связка с чат-ботами: ",
+                                            "marks": [
+                                                {
+                                                    "type": "bold"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "text": "Мини-приложение работает в синергии с ботом, который может делать автоматические рассылки, напоминать о брошенной корзине и догревать клиента.",
+                                            "marks": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "block_7",
+                    "type": "callout",
+                    "attrs": {
+                        "icon": "💡",
+                        "icon_emoji": "💡",
+                        "backgroundColor": "#E8F4FD",
+                        "borderColor": "#2196F3"
+                    },
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "text": "Как это применить к вам?",
+                                    "marks": [
+                                        {
+                                            "type": "bold"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "text": "Представьте: клиент переходит по ссылке, прямо в Telegram, ВК или МАКС открывает красивый каталог (как на сайте), выбирает товар, оплачивает картой и тут же получает чек от бота. Быстро, стильно, конверсионно.",
+                                    "marks": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "block_8",
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "text": "В агентстве Аналитический Центр Развития мы разрабатываем не только сайты и базовых ботов, но и современные Web-приложения для Telegram, МАКС и VK любой сложности. Мы перенесем ваш бизнес туда, где клиентам удобнее всего покупать.",
+                            "marks": []
+                        }
+                    ]
+                },
+                {
+                    "id": "block_9",
+                    "type": "divider",
+                    "attrs": {
+                        "style": "dashed",
+                        "color": "#CCCCCC"
+                    },
+                    "content": []
+                },
+                {
+                    "id": "block_10",
+                    "type": "tags",
+                    "attrs": {
+                        "tags": [
+                            "Web Apps",
+                            "Telegram Mini Apps",
+                            "VK Mini Apps",
+                            "Бизнес 2026",
+                            "Мобильные приложения",
+                            "Тренды"
+                        ]
+                    },
+                    "content": []
+                }
+            ]
+        },
+        "footer": {
+            "show_share_buttons": true,
+            "show_author": true,
+            "author": {
+                "name": "Аналитический Центр Развития",
+                "avatar": "https://example.com/avatar.jpg",
+                "role": "Digital-агентство"
+            },
+            "next_article_slug": "kak-sozdat-mini-app-za-nedelyu",
+            "previous_article_slug": "chto-takoe-web-apps-2026"
+        },
+        "statistics": {
+            "likes": 342,
+            "shares": 89,
+            "bookmarks": 156,
+            "comments_count": 24
+        }
+    }
+]

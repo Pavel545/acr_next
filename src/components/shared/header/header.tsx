@@ -82,7 +82,8 @@ export const Header = () => {
                             <MenuIcon />
                         </button>
 
-                        <button className={"butt"}>
+                        <button data-popup
+                                        data-popup-title="Обсудить проект" className={"butt"}>
                             Обсудить проект
                         </button>
                     </div>}

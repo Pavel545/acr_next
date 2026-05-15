@@ -110,6 +110,7 @@
     0% {
         transform: translate(0, 0) scale(1);
     }
+
     100% {
         transform: translate(60px, -40px) scale(1.1);
     }
@@ -119,6 +120,7 @@
     0% {
         transform: translate(0, 0) scale(1);
     }
+
     100% {
         transform: translate(-50px, 50px) scale(1.08);
     }
@@ -185,6 +187,7 @@
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 30px;
+    max-width: 497px;
 }
 
 @media (min-width: 768px) {
@@ -195,10 +198,11 @@
 }
 
 .tags span {
-    background: var(--zelenyy-2-osnovnoy);
-    color: #000;
+    background: var(--belyy-300);
+    color: var(--belyy);
     padding: 6px 12px;
     border-radius: var(--br);
+    backdrop-filter: blur(15px);
     font-size: 12px;
     font-weight: 500;
 }
@@ -206,7 +210,7 @@
 @media (min-width: 768px) {
     .tags span {
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: 16px;
     }
 }
 
@@ -270,7 +274,6 @@
 }
 
 .pagination {
-    margin-top: 30px;
     font-size: 18px;
     font-weight: 600;
     display: flex;
@@ -280,16 +283,11 @@
 
 @media (min-width: 768px) {
     .pagination {
-        margin-top: 40px;
         font-size: 20px;
     }
 }
 
-@media (min-width: 1024px) {
-    .pagination {
-        margin-top: 50px;
-    }
-}
+@media (min-width: 1024px) {}
 
 .active {
     color: var(--zelenyy-2-osnovnoy);
@@ -297,6 +295,36 @@
 
 .total {
     color: var(--belyy-300);
+}
+
+.price {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 130%;
+    color: var(--svetlo-seryy);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.buttBOX {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.butt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--belyy);
+}
+
+.butt:hover {
+    background: var(--zelenyy-2-osnovnoy);
 }
 
 /* RIGHT */
@@ -323,7 +351,6 @@
     .title {
         font-size: 26px;
         margin-bottom: 25px;
-        max-width: 500px;
     }
 }
 
@@ -356,7 +383,7 @@
 
 @media (min-width: 1024px) {
     .imageWrapper {
-        height: 480px;
+        height: 530px;
     }
 }
 
@@ -364,17 +391,46 @@
     object-fit: cover;
 }
 
+
+
 .navigation {
     display: flex;
     gap: 12px;
-    margin-top: 20px;
     justify-content: flex-start;
 }
 
+.navigationBox {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.moreBtn {
+    margin-top: 10px;
+    background: transparent;
+    border: none;
+    color: var(--zelenyy-2-osnovnoy);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    transition: 0.3s;
+}
+
+.moreBtn:hover {
+    opacity: 0.7;
+}
+
 @media (min-width: 768px) {
+    .navigationBox {
+        margin-top: 25px;
+
+    }
+
     .navigation {
         gap: 16px;
-        margin-top: 25px;
         justify-content: flex-end;
     }
 }
@@ -435,26 +491,95 @@
     height: 100%;
 }
 
+.accordionHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.accordionIcon {
+    font-size: 18px;
+    color: var(--zelenyy-2-osnovnoy);
+    margin-left: 10px;
+}
+
+/* Только на мобиле делаем кликабельным */
+@media (min-width: 769px) {
+    .accordionHeader {
+        cursor: default;
+
+    }
+
+    .accordionIcon {
+        display: none;
+    }
+
+}
+
 /* Additional responsive adjustments for very small screens */
 @media (max-width: 480px) {
     .tags span {
         font-size: 11px;
         padding: 5px 10px;
     }
-    
+
+    .accordionHeader {
+        transition: 300ms;
+        cursor: default;
+
+        padding: 10px 15px;
+        border-bottom: 1px solid var(--belyy-300);
+
+
+    }
+
+    .label {
+        font-size: 14px;
+        text-transform: uppercase;
+
+        color: var(--belyy);
+
+    }
+    .decorLine{
+        display: none;
+    }
+
+    .accordionHeader.open {
+        background: var(--belyy-100);
+        border-bottom: 1px solid transparent;
+
+    }
+
+    .text {
+        padding: 10px;
+    }
+
+    .list {
+        padding: 15px 30px;
+    }
+
+    .buttBOX {
+        grid-template-columns: 1fr;
+    }
+
     .caseNumber {
         font-size: 28px;
     }
-    
+
     .title {
         font-size: 20px;
     }
-    
+
     .nextBtn {
         padding: 0 12px;
         font-size: 12px;
     }
-    
+
     .arrowBtn {
         width: 36px;
         height: 36px;

@@ -1,13 +1,16 @@
+import { PostCard } from "@/types/blog";
 import s from "./BlogCard.module.scss";
+import Link from "next/link";
 
 
-export default function BlogCard({ id, type, date, time, title, textMini, img }: { id: number; type: string; date: string; time: string; title: string; textMini: string; img: string }) {
+export default function BlogCard(props: PostCard) {
     return (
+        <Link href={`/blog/${props.slug}`}>
         <article className={s.blogCard}>
             <div className={s.blogCardHeader}>
                 <div className={s.info}>
                     <span className={s.type}>
-                        {type}
+                        {props.type}
                     </span>
 
                     <div className={s.time}>
@@ -16,27 +19,27 @@ export default function BlogCard({ id, type, date, time, title, textMini, img }:
                         </svg>
 
                         <span>
-                            {time}
+                            {props.time}
                         </span>
                     </div>
                 </div>
                 <div className={s.blogCardImg}>
-                    <img src={img} alt={title} />
+                    <img src={props.img} alt={props.title} />
                 </div>
             </div>
             <div className={s.blogCardContent}>
                 <div className={s.date}>
-                    {date}
+                    {props.date}
                 </div>
 
                 <h3 className={s.title}>
-                    {title}
+                    {props.title}
                 </h3>
 
                 <p className={s.textMini}>
-                    {textMini}
+                    {props.textMini}
                 </p>
             </div>
-        </article>
+        </article></Link>
     )
 }

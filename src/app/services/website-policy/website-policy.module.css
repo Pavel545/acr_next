@@ -1,8 +1,6 @@
 /* Container */
 .container2 {
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+    padding: 2rem;
 }
 
 /* Slide */
@@ -11,13 +9,7 @@
     position: relative;
 }
 
-/* Typography */
-.h2 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-}
+
 
 .tGradient {
     background: linear-gradient(45deg, var(--siniy), var(--goluboy));
@@ -85,7 +77,6 @@
 }
 
 .itemT {
-    font-family: var(--second-family);
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
@@ -100,7 +91,6 @@
     flex-direction: column;
     gap: 2vh;
     overflow: hidden;
-    position: relative;
 }
 
 .rightList {
@@ -158,6 +148,8 @@
     padding: 15px 20px;
     border-radius: 12px;
     margin-top: 10px;
+    position: relative;
+    z-index: 3;
 }
 
 /* Button */
