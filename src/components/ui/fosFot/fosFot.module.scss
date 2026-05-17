@@ -18,16 +18,13 @@
     }
 }
 
-.box{
+.box {
     display: flex;
     flex-direction: column;
-
     gap: 15px;
 }
 
 .form {
-    margin-top: 20px;
-
     gap: 20px;
 }
 
@@ -37,10 +34,14 @@
     gap: 50px;
 }
 
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
 .input {
     all: unset;
     box-sizing: border-box;
-
     padding: 16px 20px;
     font-family: var(--font-family);
     font-weight: 500;
@@ -68,15 +69,21 @@
     &:focus {
         border-color: var(--zelenyy-2-osnovnoy);
         background: rgba(255, 255, 255, 0.15);
-        // box-shadow: 0 0 15px rgba(220, 255, 92, 0.3);
+        outline: none;
+    }
+
+    &.error {
+        box-shadow: 0px 0px 2px #ff4444;
+        border-color: #ff4444;
+        
+        &:focus {
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.3);
+        }
     }
 
     &::-webkit-calendar-picker-indicator {
         filter: brightness(0) saturate(100%) invert(100%) sepia(29%) saturate(4299%) hue-rotate(22deg) brightness(117%) contrast(102%);
-        ;
         cursor: pointer;
-
-
     }
 }
 
@@ -84,6 +91,18 @@
     resize: vertical;
     min-height: 100px;
     font-family: var(--font-family);
+}
+
+.errorMessage {
+    display: block;
+    font-size: 12px;
+    color: #ff6666;
+    margin-top: 5px;
+    font-family: var(--font-family);
+}
+
+.privacyError {
+    margin-top: 5px;
 }
 
 .submitBtn {
@@ -100,14 +119,15 @@
     transition: all 0.3s ease;
     margin-top: 10px;
     width: 100%;
+    border: none;
 
-    &:hover {
+    &:hover:not(:disabled) {
         background: var(--zelenyy-5);
         transform: translateY(-2px);
         box-shadow: 0 10px 25px rgba(220, 255, 92, 0.3);
     }
 
-    &:active {
+    &:active:not(:disabled) {
         transform: translateY(0);
         background: var(--zelenyy-6);
     }
@@ -116,39 +136,88 @@
         outline: 2px solid var(--belyy);
         outline-offset: 2px;
     }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
 }
 
-.date {}
-
-.basa4{
+.basa4 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr );
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+    margin-top: clamp(10px, 2rem, 32px);
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
-    }   
+    }
 }
+
+.dateTimeWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
 .agreement {
-    display: block;
     font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 140%;
+    font-weight: 500;
+    line-height: 120%;
     color: var(--seryy);
-    text-align: center;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
+}
 
-    a {
-        color: var(--zelenyy-2-osnovnoy);
-        text-decoration: none;
-        transition: color 0.3s ease;
+.checkbox {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--seryy);
+    align-items: flex-start;
+    cursor: pointer;
+    font-family: var(--font-family);
 
-        &:hover {
-            color: var(--belyy);
+    input {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    span {
+        flex: 1;
+        
+        a {
+            color: var(--zelenyy-2-osnovnoy);
             text-decoration: underline;
+            
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
+}
+
+.thankYou {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff2e 0%, #ffffff1a 50%, #ffffff23 100%);
+    backdrop-filter: blur(10px);
+    border-radius: var(--br);
+    box-shadow: 0px 0px 2px #ffffff;
+}
+
+.thankYouIcon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.thankYouText {
+    color: var(--seryy);
+    margin-top: 15px;
 }

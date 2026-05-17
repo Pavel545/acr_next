@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import post from "@/data/blog.json";
 import { mapPostToCard, Post } from '@/types/blog';
 
-export default function Blog() {
+export default function Blog({type}:{type?:string}) {
     const typedPosts = post as Post[];
     const blogPosts = typedPosts
         .slice(0, 3)
@@ -23,9 +23,9 @@ export default function Blog() {
                         Наш блог
                     </h2>
 
-                    <Link href="/blog" className='btn'>
+                   {!type && <Link href="/blog" className='btn linkNorm'>
                         Смотреть все
-                    </Link>
+                    </Link>} 
                 </div>
 
                 {/* Десктопная сетка */}

@@ -9,7 +9,7 @@ import Technologies from "@/components/sections/main/technologies/technologies";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{background:"var(--svetlyy)"}}>
       <HeroMain />
       <div className="swap">
         <Cooperation />

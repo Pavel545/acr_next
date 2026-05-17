@@ -83,6 +83,15 @@ export default function HeroMain() {
                             isFloating={isCardFloating}
                         />
                     )}
+                    {isMobile && (
+                       <button
+                                className={`butt ${s.buts}`}
+                                data-popup
+                                data-popup-title="Обсудить проект"
+                            >
+                              Обсудить проект
+                            </button>
+                    )}
                 </div>
 
                 <div className={s.services}>

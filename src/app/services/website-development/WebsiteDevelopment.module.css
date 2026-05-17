@@ -1,6 +1,6 @@
 /* Container */
 .container2 {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 
@@ -106,8 +106,8 @@
   padding: 30px 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-     grid-column: var(--colS) / span var(--colEnd);
-        grid-row: var(--rowS) / span var(--rowEnd);
+  grid-column: var(--colS) / span var(--colEnd);
+  grid-row: var(--rowS) / span var(--rowEnd);
 }
 
 /* Active item styles */
@@ -218,6 +218,7 @@
   bottom: 0;
   height: 100%;
   right: 0;
+  pointer-events: none;
 }
 
 .decorImg {
@@ -259,6 +260,9 @@
   .item {
     padding: 25px 20px;
     min-height: auto;
+
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 
   .item.active {
@@ -378,7 +382,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) {
   .content {
     grid-template-columns: 1fr 1fr !important;
     gap: 10px;

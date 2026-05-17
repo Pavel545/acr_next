@@ -26,7 +26,7 @@
   --second-family: "Unbounded", sans-serif;
 
   --br: 5px;
-  --gradient:linear-gradient(180deg, #000512 0%, #000f35 100%);
+  --gradient: linear-gradient(180deg, #000512 0%, #000f35 100%);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -72,31 +72,31 @@ button {
 
 /* Базовые стили (десктоп) */
 .container {
-    max-width: 1640px;
-    width: 100%;
-    padding: 0 20px;
-    margin: 0 auto;
+  max-width: 1640px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 /* Планшеты */
 @media screen and (max-width: 1199px) {
-    .container {
-        padding: 0 20px;
-    }
+  .container {
+    padding: 0 20px;
+  }
 }
 
 /* Мобильные устройства */
 @media screen and (max-width: 767px) {
-    .container {
-        padding: 0 15px;
-    }
+  .container {
+    padding: 0 15px;
+  }
 }
 
 /* Маленькие мобильные */
 @media screen and (max-width: 480px) {
-    .container {
-        padding: 0 12px;
-    }
+  .container {
+    padding: 0 12px;
+  }
 }
 
 
@@ -125,21 +125,22 @@ button {
   transition: 300ms all ease;
 }
 
-.butt2{
-    border-radius: 5px;
-    padding: 10px;
-    background: var(--zelenyy-2-osnovnoy);
+.butt2 {
+  border-radius: 5px;
+  padding: 10px;
+  background: var(--zelenyy-2-osnovnoy);
 
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 120%;
-    text-transform: uppercase;
-    color: var(--temnyy);
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: var(--temnyy);
 
-    transition: 300ms all ease;
-    font-weight: 500;
+  transition: 300ms all ease;
+  font-weight: 500;
 }
+
 .butt2:hover {
   background: var(--zelenyy-5);
   color: var(--belyy);
@@ -169,12 +170,21 @@ button {
   text-transform: uppercase;
 }
 
-.h3{
-    font-family: var(--second-family);
-    font-weight: 700;
-    font-size: clamp(16px, 1.5rem, 25px);
-    line-height: 120%;
-    text-transform: uppercase;
+.h3 {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: clamp(16px, 1.5rem, 25px);
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+
+.t16 {
+  font-size: clamp(12px, 1rem, 16px);
+}
+
+.t18 {
+  font-size: clamp(14px, 1.2rem, 18px);
 }
 
 .siniy {
@@ -189,16 +199,17 @@ button {
   position: relative;
   min-height: 100vh;
 }
+
 /* === Временные стили end   */
 
-
+/* 404 start */
 
 .erPage {
   height: 100vh;
 }
 
 
-.erPageContainer{
+.erPageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,39 +221,37 @@ button {
 }
 
 
-.erPageContainer .h1{
+.erPageContainer .h1 {
   color: var(--temnyy);
   text-align: center;
 }
 
 
 
-.erPageContainer *{
+.erPageContainer * {
   z-index: 9;
   position: relative;
 }
-.err404{
-  position: absolute;
+
+.err404 {
   z-index: 5;
 
   pointer-events: none;
   width: 100%;
   height: auto;
   object-fit: contain;
-
-  top: 10vh;
+  margin-top: 10vh;
 }
 
 
 @media screen and (max-width: 767px) {
-  .erPageContainer .h1{
- font-size: 20px;
+  .erPageContainer .h1 {
+    font-size: 20px;
+  }
+
 }
 
-.err404{
-  top: 30%;
-}
-}
+/* 404 end */
 
 
 
@@ -276,3 +285,70 @@ button {
     order: 1;
   }
 }
+
+
+.linkNorm{
+        font-family: var(--font-family);
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--temnyy);
+        position: relative;
+        padding: 10px 0;
+        transition: 300ms all;
+
+        width: fit-content;
+
+        /* 
+        ======= ВОТ ГЛАВНАЯ МАГИЯ =======
+        1. Делаем текст прозрачным
+        2. Градиент показываем только там, где есть буквы
+      */
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* 
+        Градиент: слева серый, справа серый = текст серый.
+        Но transition на background-size сдвигает границу зелёного.
+      */
+        background-image: linear-gradient(to right,
+                var(--zelenyy-6) 0%,
+                var(--zelenyy-5) 50%,
+                var(--temnyy) 50%,
+                var(--temnyy) 100%);
+
+        /* 
+        Растягиваем градиент вдвое шире элемента 
+        и сдвигаем вправо, чтобы была видна только серая половина.
+      */
+        background-size: 200% 100%;
+        background-position: 100% 0%;
+
+        /* Плавность — можно поиграть с кривой */
+        transition: background-position 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background: var(--zelenyy-4);
+            border-radius: 2px;
+
+            /* Сжато влево в покое */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        &:hover {
+            background-position: 0% 0%;
+
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }

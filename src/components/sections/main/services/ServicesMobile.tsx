@@ -11,15 +11,16 @@ import Decor2 from '@/assets/images/services3D/3.svg';
 import Decor6 from '@/assets/images/services3D/4.svg';
 import Decor7 from '@/assets/images/services3D/5.svg';
 import Decor3 from '@/assets/images/services3D/6.svg';
+import Link from "next/link";
 
 const services = [
-    { id: 1, href:'/services/smart-chatbots', title: "Умный чат-бот", Icon: Decor5, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 2, href:'', title: "Мобильные приложения", Icon: Decor4, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 3, href:'/services/website-development', title: "Разработка сайта", Icon: Decor3, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 4, href:'', title: "Дизайн", Icon: Decor6, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 5, href:'', title: "Маркетинг", Icon: Decor7, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 6, href:'', title: "Политика сайта", Icon: Decor2, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
-    { id: 7, href:'', title: "Аудит сайта", Icon: Decor4, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 1, href: '/services/smart-chatbots', title: "Умный чат-бот", Icon: Decor5, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 2, href: '/services/mobile-app', title: "Мобильные приложения", Icon: Decor4, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 3, href: '/services/website-development', title: "Разработка сайта", Icon: Decor3, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 4, href: '/services/design', title: "Дизайн", Icon: Decor6, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 5, href: '/services/marketing', title: "Маркетинг", Icon: Decor7, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 6, href: '/services/website-policy', title: "Политика сайта", Icon: Decor2, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
+    { id: 7, href: '/services/audit', title: "Аудит сайта", Icon: Decor4, description: "Создаем нативные и кроссплатформенные мобильные приложения для iOS и Android" },
 ];
 
 const layouts = {
@@ -142,9 +143,9 @@ export default function ServicesMobile() {
                                                     }}
                                                 >
                                                     <p className={s.description}>{service.description}</p>
-                                                    <button className={s.button}><svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <Link href={service.href} className={s.button}><svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path stroke="var(--temnyy)" d="M0.16741 0.134543C0.377127 -0.0569375 0.702445 -0.0422923 0.893973 0.167355L3.16708 2.65675C3.42087 2.93479 3.41596 3.36212 3.15603 3.63443L0.886272 6.01233C0.690152 6.21766 0.364458 6.22513 0.15904 6.02907C-0.0463209 5.83296 -0.0537611 5.50727 0.142299 5.30184L2.21083 3.13488L0.134598 0.861105C-0.056874 0.651398 -0.0422101 ₀.326₀74 ₀.₁₆₇₄₁ ₀.₁₃₄₅₄₃Z" fill="#₂₈₂₆₃₁" />
-                                                    </svg></button>
+                                                    </svg></Link>
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>

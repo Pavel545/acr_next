@@ -1,0 +1,77 @@
+.InDevelopment {
+    margin-top: 5vh;
+
+    :global([data-blok="van"]) {
+        transition: 300ms;
+
+        animation: 4s van infinite;
+    }
+
+    @keyframes van {
+        0% {
+            transform: translate3d(0, 0, 0);
+
+        }
+
+        50% {
+            transform: translate3d(42px, 30px, 10px);
+
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0);
+
+        }
+    }
+
+
+    :global([data-blok="tu"]) {
+        transition: 300ms;
+
+
+        animation: 12s tu infinite;
+    }
+
+    @keyframes tu {
+        0% {
+            transform: translate3d(0, 0, 0) scale(1);
+
+        }
+
+        50% {
+            transform: translate3d(6px, 34px, 0)scale(.8);
+
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+
+        }
+    }
+
+
+    .images {
+        &Box {
+            position: relative;
+        }
+
+
+        &Static {
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            display: none;
+
+            &Static {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+
+
+
+}

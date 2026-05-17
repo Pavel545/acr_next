@@ -1,5 +1,6 @@
 // app/not-found.tsx
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -13,10 +14,12 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
     return (
-       <main style={{background: "var(--svetlyy)"}}>
-         <section className='erPage'>
-                <div className="erPageContainer">
-                    <h1 className="h1">Упс! Мы не смогли найти <br /> такую страницу</h1>
+        <main style={{ background: "var(--svetlyy)" }}>
+            <section className='erPage'>
+                <div className="container erPageContainer">
+                    <Image src="/404.png" width={1341} height={410} alt="Страница не найдена" className='err404' />
+
+                    <h1 className="h1">кажется не та <br /> галактика</h1>
                     <Link
                         href="/"
                         className="butt"
@@ -24,9 +27,8 @@ export default function NotFound() {
                         Вернуться на главную
                     </Link>
 
-                    <img src="/404.svg" alt="Страница не найдена" className='err404' />
                 </div>
-        </section>
-       </main>
+            </section>
+        </main>
     );
 }

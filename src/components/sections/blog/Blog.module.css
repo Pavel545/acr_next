@@ -1,6 +1,6 @@
 .blog {
-    padding: clamp(30vh, 10vh, 90px) 0;
-
+    padding: clamp(30px, 10vh, 120px) 0;
+    background: var(--svetlyy);
     overflow: hidden;
 }
 

@@ -1,7 +1,7 @@
 "use client"
 
-import { SOCIAL_LINKS } from "@/config/constants";
-import s from "./footer.module.css";
+import { NAVIGATION_LINKS, SOCIAL_LINKS } from "@/config/constants";
+import s from "./footer.module.scss";
 import Image from "next/image";
 import FosFot from "@/components/ui/fosFot/fosFot";
 import { SERVICES_DATA } from "@/config/constants/services";
@@ -19,14 +19,44 @@ export const Footer = () => {
             <div className="container">
                 <div className={s.content}>
                     <div className={s.leftContent}>
-                        <p className="h2">
-                            Давайте обсудим ваш проект
-                        </p>
-                        <p className={s.leftContentText}>
-                            Выберите нужную услугу, кратко опишите вашу задачу и заполните свои контактные данные.
-                        </p>
+                        <div className={s.leftNavBox}>
+                            <h3 className={`t16 ${s.leftNavBoxTitle}`}>
+                                Навигация
+                            </h3>
+
+                            <nav className={s.leftNavList}>
+                                {NAVIGATION_LINKS.map((e, i) => (
+                                    <a key={`NAVIGATION_LINKS-${i}`} className={`t18 ${s.leftNavLink}`} href={e.href}> <span>{e.name}</span> </a>
+                                ))}
+
+                            </nav>
+                        </div>
 
 
+
+                        {!isMobile && <div className={s.leftNavBox}>
+                            <h3 className={`t16 ${s.leftNavBoxTitle}`}>Связаться:</h3>
+                            <nav className={s.social_links}>
+                                {SOCIAL_LINKS.map((link) => (
+                                    <a key={link.name + "_foot"} href={link.href} className={s.social_link} target="_blank" rel="noopener noreferrer">
+                                        <Image className={s.social_link_image} src={`/${link.icon}`} alt={link.name} width={45} height={45} />
+                                    </a>
+                                ))}
+                            </nav>
+                        </div>}
+
+                    </div>
+
+                    <div className={s.leftNavBox}>
+                        <h3 className={`t16 ${s.leftNavBoxTitle}`}>Услуги</h3>
+                        <nav className={s.leftNavList}>
+                            {SERVICES_DATA.map((e, i) => (
+                                <a key={i} className={`t18 ${s.leftNavLink}`} href={e.href}>{e.name}</a>
+                            ))}
+                        </nav>
+                    </div>
+                    {isMobile && <div className={s.leftNavBox}>
+                        <h3 className={`t16 ${s.leftNavBoxTitle}`}>Связаться:</h3>
                         <nav className={s.social_links}>
                             {SOCIAL_LINKS.map((link) => (
                                 <a key={link.name + "_foot"} href={link.href} className={s.social_link} target="_blank" rel="noopener noreferrer">
@@ -34,18 +64,8 @@ export const Footer = () => {
                                 </a>
                             ))}
                         </nav>
-                    </div>
-
+                    </div>}
                     <div className={s.footFos}>
-                        <div>
-                            <h3 className="h3">Услуги</h3>
-                            <nav className={s.footLinks}>
-                                {SERVICES_DATA.map((e, i) => (
-                                    <a key={i} className={s.footLink} href={e.href}>{e.name}</a>
-                                ))}
-                            </nav>
-                        </div>
-                        
                         <FosFot />
                     </div>
                 </div>
@@ -68,7 +88,7 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
-            {isMobile && <MobMenu/> }
+            {/* {isMobile && <MobMenu />} */}
         </footer>
     )
 }

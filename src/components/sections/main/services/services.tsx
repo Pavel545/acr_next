@@ -8,9 +8,10 @@ export default function Services() {
         <section className={s.services}>
             <div className='container'>
                 <div className={s.servicesHeader}>
-                    <SectionTitle>
+               
+                    <h2 className='h2'>
                         услуги
-                    </SectionTitle>
+                    </h2>
                     <p className={s.servicesText}>
                         Используйте передовые технологии <br />и инновационные инструменты, чтобы сделать ваш бизнес быстрее, проще <br />и прибыльнее
                     </p>
