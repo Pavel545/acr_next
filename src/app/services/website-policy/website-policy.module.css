@@ -145,7 +145,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f5f7fa;
+    background: #d4e5ff;
     padding: 15px 20px;
     border-radius: 12px;
     margin-top: 10px;
@@ -319,6 +319,10 @@
         flex-direction: column;
         gap: 15px;
     }
+      .fosBox{
+    text-align: center;
+  }
+
 
     .but {
         width: 100%;

@@ -17,6 +17,6 @@ export const NAVIGATION_LINKS = [
 export const SOCIAL_LINKS = [
   { icon: "icons/telegram.svg", name: "Telegram", href: "https://t.me/+79093587042" },
   { icon: "icons/vkontakte.svg", name: "VKontakte", href: "https://vk.com/acr_agency" },
-  { icon: "icons/max.svg", name: "MAX", href: "https://max.ru/" },
+  { icon: "icons/max.svg", name: "MAX", href: "https://max.ru/u/f9LHodD0cOJELFoNJONZYWCr1IYfusHuvIMvImZICoJHGe1Sgjqw2jWfEN0" },
   { icon: "icons/email.svg", name: "Email", href: "mailto:acr-agency@yandex.ru" },
 ];

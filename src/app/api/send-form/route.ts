@@ -56,7 +56,7 @@ function createEmailHTML(data: {
         <div style="width:600px; background: #eee; padding:0px; display: inline-block;">
           <div style="text-align: center; background-color: #fff; padding: 30px; border-radius: 3px; line-height: 24px;">
             <h2 style="margin-top: 10px; color:#000">
-              Заявка на сайте <span style="color: #203c97;">diatomit-inza.ru</span>
+              Заявка на сайте <span style="color: #203c97;">acr-agency.ru</span>
             </h2>
             <p style="color: #666; font-size: 12px;">Время отправки: ${currentDate}</p>
             
@@ -137,12 +137,12 @@ export async function POST(request: NextRequest) {
     // Создаем HTML письма
     const html = createEmailHTML({ name, phone, message, topic });
 
-    console.log('📧 Отправка письма на sales@vulkanit.com...');
+    console.log('📧 Отправка письма на acr-agency@yandex.ru...');
 
     // Отправляем письмо основному получателю
     const mainResult = await transporter.sendMail({
       from: '"Аналитический центр развитие" <ForAnalyticss@yandex.ru>',
-      to: 'sales@vulkanit.com',
+      to: 'acr-agency@yandex.ru',
       subject: subject,
       html: html,
     });

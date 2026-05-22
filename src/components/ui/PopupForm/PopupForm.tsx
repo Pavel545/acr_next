@@ -1,6 +1,7 @@
 // PopupForm.tsx
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './PopupForm.module.css';
+import Link from 'next/link';
 
 interface PopupFormProps {
     id?: string;
@@ -8,10 +9,10 @@ interface PopupFormProps {
     endpoint?: string;
 }
 
-const PopupForm: React.FC<PopupFormProps> = ({ 
-    id = "popup-form", 
+const PopupForm: React.FC<PopupFormProps> = ({
+    id = "popup-form",
     defaultTitle = "Бесплатный аудит",
-    endpoint = "https://bravo.acr-agency.ru/api/send-form-universal"
+    endpoint = "/api/send-form"
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +26,7 @@ const PopupForm: React.FC<PopupFormProps> = ({
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [showThankYou, setShowThankYou] = useState(false);
     const [popupTitle, setPopupTitle] = useState(defaultTitle);
-    
+
     const overlayRef = useRef<HTMLDivElement>(null);
     const nameInputRef = useRef<HTMLInputElement>(null);
     const phoneInputRef = useRef<HTMLInputElement>(null);
@@ -98,17 +99,17 @@ const PopupForm: React.FC<PopupFormProps> = ({
     const formatPhone = (value: string): string => {
         let digits = value.replace(/\D/g, "");
         if (!digits) return "";
-        
+
         if (digits.length > 11) {
             digits = digits.slice(0, 11);
         }
-        
+
         let formatted = "+7";
         if (digits.length > 1) formatted += " (" + digits.slice(1, 4);
         if (digits.length >= 4) formatted += ") " + digits.slice(4, 7);
         if (digits.length >= 7) formatted += "-" + digits.slice(7, 9);
         if (digits.length >= 9) formatted += "-" + digits.slice(9, 11);
-        
+
         return formatted;
     };
 
@@ -123,12 +124,12 @@ const PopupForm: React.FC<PopupFormProps> = ({
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value, type } = e.target;
         const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
-        
+
         setFormData({
             ...formData,
             [name]: type === 'checkbox' ? checked : value
         });
-        
+
         if (errors[name]) {
             setErrors({ ...errors, [name]: '' });
         }
@@ -157,32 +158,43 @@ const PopupForm: React.FC<PopupFormProps> = ({
 
     const validateForm = (): boolean => {
         const newErrors: Record<string, string> = {};
-        
+
         newErrors.name = validateField('name', formData.name);
         newErrors.phone = validateField('phone', formData.phone);
         newErrors.email = validateField('email', formData.email);
         newErrors.privacy = validateField('privacy_policy', formData.privacy_policy);
-        
+
         setErrors(newErrors);
-        
+
         return !Object.values(newErrors).some(error => error);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!validateForm()) return;
-        
+
         setIsSubmitting(true);
-        
+
         try {
             const controller = new AbortController();
-            const response = await fetch(endpoint, { signal: controller.signal });
-            
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    phone: formData.phone,
+                    email: formData.email,
+                    message: formData.service,
+                    topic: defaultTitle,
+                }),
+                signal: controller.signal
+            });
+
             if (!response.ok) throw new Error("Ошибка отправки");
-            
+
             setShowThankYou(true);
-            
+
             setTimeout(() => {
                 closePopup();
                 setShowThankYou(false);
@@ -228,7 +240,7 @@ const PopupForm: React.FC<PopupFormProps> = ({
                 closePopup();
             }
         };
-        
+
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
     }, [isOpen, closePopup]);
@@ -240,7 +252,7 @@ const PopupForm: React.FC<PopupFormProps> = ({
         } else {
             document.body.style.overflow = '';
         }
-        
+
         return () => {
             document.body.style.overflow = '';
         };
@@ -259,20 +271,20 @@ const PopupForm: React.FC<PopupFormProps> = ({
             const { title, service } = e.detail || {};
             openPopup(title, service);
         };
-        
+
         const handleClickTrigger = (e: MouseEvent) => {
             const trigger = (e.target as HTMLElement).closest('[data-popup]') as HTMLElement;
             if (!trigger) return;
-            
+
             const title = trigger.dataset.popupTitle || trigger.getAttribute('title') || '';
             const service = trigger.dataset.popupService || '';
-            
+
             openPopup(title, service);
         };
-        
+
         document.addEventListener('open-popup', handleOpenPopup as EventListener);
         document.addEventListener('click', handleClickTrigger);
-        
+
         return () => {
             document.removeEventListener('open-popup', handleOpenPopup as EventListener);
             document.removeEventListener('click', handleClickTrigger);
@@ -298,8 +310,8 @@ const PopupForm: React.FC<PopupFormProps> = ({
             onClick={handleOverlayClick}
         >
             <div className={styles.popupContainer}>
-                <button 
-                    className={styles.popupClose} 
+                <button
+                    className={styles.popupClose}
                     onClick={closePopup}
                     aria-label="Закрыть окно"
                 >
@@ -319,7 +331,7 @@ const PopupForm: React.FC<PopupFormProps> = ({
                     {!showThankYou ? (
                         <>
                             <h2 className={styles.title}>{popupTitle}</h2>
-                            
+
                             <form onSubmit={handleSubmit} className={styles.form}>
                                 <div className={styles.inputWrapper}>
                                     <input
@@ -367,11 +379,6 @@ const PopupForm: React.FC<PopupFormProps> = ({
                                     value={formData.service}
                                     onChange={handleInputChange}
                                 ></textarea>
-
-                                <button type="submit" disabled={isSubmitting}>
-                                    {isSubmitting ? "Отправка..." : "ОТПРАВИТЬ"}
-                                </button>
-
                                 <label className={styles.checkbox}>
                                     <input
                                         type="checkbox"
@@ -380,10 +387,15 @@ const PopupForm: React.FC<PopupFormProps> = ({
                                         onChange={handleInputChange}
                                     />
                                     <span>
-                                        Нажимая кнопку "Отправить", Вы подтверждаете что ознакомились с{" "}
-                                        <a href="#">Правилами обработки персональных данных</a>
+                                        Я ознакомлен(а) с{" "}
+                                        <Link onClick={closePopup} href="/soglasie-obrabotka-pers-dannih">Правилами обработки персональных данных</Link>
                                     </span>
                                 </label>
+                                <button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting ? "Отправка..." : "ОТПРАВИТЬ"}
+                                </button>
+
+
                                 <span className={`${styles.errorMessage} ${styles.privacyError}`}>
                                     {errors.privacy}
                                 </span>

@@ -15,6 +15,7 @@ export default function Home() {
         <Cooperation />
       <ServicesG />
       </div>
+      
       <Cases />
       <Advantages />
       <Technologies />

@@ -143,7 +143,7 @@ export default function ServicesMobile() {
                                                     }}
                                                 >
                                                     <p className={s.description}>{service.description}</p>
-                                                    <Link href={service.href} className={s.button}><svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <Link href={service.href} className={s.button}>Перейти <svg viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path stroke="var(--temnyy)" d="M0.16741 0.134543C0.377127 -0.0569375 0.702445 -0.0422923 0.893973 0.167355L3.16708 2.65675C3.42087 2.93479 3.41596 3.36212 3.15603 3.63443L0.886272 6.01233C0.690152 6.21766 0.364458 6.22513 0.15904 6.02907C-0.0463209 5.83296 -0.0537611 5.50727 0.142299 5.30184L2.21083 3.13488L0.134598 0.861105C-0.056874 0.651398 -0.0422101 ₀.326₀74 ₀.₁₆₇₄₁ ₀.₁₃₄₅₄₃Z" fill="#₂₈₂₆₃₁" />
                                                     </svg></Link>
                                                 </motion.div>

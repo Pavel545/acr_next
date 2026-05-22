@@ -1,4 +1,4 @@
-import styles from '../services.module.css';
+import styles from '../mobile-app/MobileApp.module.css';
 
 export default function Marketing() {
     return (
@@ -51,7 +51,8 @@ export default function Marketing() {
                                 <span className={`${styles.t20} ${styles.siniy}`}> от 25 000</span>
                             </div>
                             <button
-                                className="butt2"
+                            
+                                className={`butt2 ${styles.butM}`}
                                 data-popup
                                 data-popup-title="Интернет-маркетинг"
                             >

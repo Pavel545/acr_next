@@ -1,4 +1,4 @@
-import styles from '../services.module.css';
+import styles from '../mobile-app/MobileApp.module.css';
 
 export default function Audit() {
     return (
@@ -59,12 +59,11 @@ export default function Audit() {
                                 <span className={`${styles.t20} ${styles.siniy}`}> Бесплатно</span>
                             </div>
                             <button
-                                className="butt2"
+                                 className={`butt2 ${styles.butM}`}
                                 data-popup
-                                data-popup-title="Заказать сайт"
-                                data-popup-service="Разработка"
+                                data-popup-title="Бесплатный аудит"
                             >
-                                Заказат аудит
+                                Заказать аудит
                             </button>
                         </div>
                     </div>

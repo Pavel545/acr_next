@@ -64,6 +64,10 @@
     z-index: 2;
     padding: 14px;
     height: 100%;
+
+
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -85,7 +89,7 @@
 
 .content {
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -96,9 +100,17 @@
 .button {
     background: var(--belyy);
     border-radius: 17px;
-    width: 24px;
+    width: fit-content;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--temnyy);
     height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+}
+.button svg {
+    width: 10px;
+    height: 10px;
 }

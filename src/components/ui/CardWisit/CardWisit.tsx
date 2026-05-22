@@ -1,5 +1,8 @@
+// CardWisit.tsx
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useChat } from "@/contexts/ChatContext"; // импортируем хук
 import s from "./CardWisit.module.css";
 
 export default function CardWisit({
@@ -16,20 +19,26 @@ export default function CardWisit({
     isFloating?: boolean
 }) {
     const [isCompact, setIsCompact] = useState(false);
+    const { openChat } = useChat(); // получаем функцию открытия чата
 
     useEffect(() => {
         setIsCompact(isFloating);
     }, [isFloating]);
 
-    const handleClick = () => {
+    const handleCardClick = () => {
         if (isCompact) {
-            // Действие при клике на компактную версию
-            console.log("Quick access clicked");
+            openChat(); // Открываем чат при клике на компактную версию
         }
     };
 
+    const handleButtonClick = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Предотвращаем всплытие, чтобы не сработал handleCardClick
+
+        openChat(); // Открываем чат при клике на кнопку
+    };
+
     return (
-        <div className={`${s.card} ${isCompact ? s.compact : ''} ${isFloating ? s.floating : ''}`} onClick={handleClick}>
+        <div className={`${s.card} ${isCompact ? s.compact : ''} ${isFloating ? s.floating : ''}`} onClick={handleCardClick}>
             <div className={s.cardImgBox}>
                 <Image
                     className={s.cardImg}
@@ -43,8 +52,10 @@ export default function CardWisit({
                 <div className={s.cardContent}>
                     <h3 className={s.name}>{name}</h3>
                     <p className={s.post}>{post}</p>
-                    <button data-popup
-                        data-popup-title="Обсудить проект" className={`${s.button} butt`}>
+                    <button
+                        onClick={handleButtonClick}
+                        className={`${s.button} butt`}
+                    >
                         {textButton}
                     </button>
                 </div>

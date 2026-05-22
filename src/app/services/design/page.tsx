@@ -1,4 +1,4 @@
-import styles from '../services.module.css';
+import styles from '../mobile-app/MobileApp.module.css';
 
 export default function Design() {
     return (
@@ -9,14 +9,14 @@ export default function Design() {
                         <div className={`${styles.group} ${styles.title}`}>
                             <h1 className="h2">Дизайн</h1>
                             <p className={`${styles.t20} ${styles.grey} ${styles.mobIts}`}>
-Полный цикл профессиональной разработки дизайна под ключ
+                                Полный цикл профессиональной разработки дизайна под ключ
                             </p>
                         </div>
 
                         <div className={styles.group}>
                             <h3 className={styles.t30}>Что предлагаем:</h3>
                             <p className={styles.t20}>
-                              Что предлагаем:
+                                Что предлагаем:
                             </p>
                             <ul className={styles.ulSin}>
                                 <li>Уникальный современный UI/UX-дизайн для сайтов</li>
@@ -41,7 +41,7 @@ export default function Design() {
                         <div className={styles.group}>
                             <h3 className={styles.t30}>Результат:</h3>
                             <p className={styles.t20}>
-                               Современный и эффективный дизайн, который усиливает имидж вашего бренда, выделяет вас среди конкурентов и помогает быстрее превращать посетителей в реальных клиентов.
+                                Современный и эффективный дизайн, который усиливает имидж вашего бренда, выделяет вас среди конкурентов и помогает быстрее превращать посетителей в реальных клиентов.
                             </p>
                         </div>
 
@@ -55,11 +55,11 @@ export default function Design() {
                                 <span className={`${styles.t20} ${styles.siniy}`}> от 20 000</span>
                             </div>
                             <button
-                                className="butt2"
+                              className={`butt2 ${styles.butM}`}
                                 data-popup
                                 data-popup-title="Дизайн"
                             >
-                                Заказат Дизайн
+                                Заказать Дизайн
                             </button>
                         </div>
                     </div>

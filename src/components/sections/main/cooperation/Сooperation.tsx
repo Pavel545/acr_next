@@ -101,7 +101,7 @@ export default function Cooperation() {
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         modules={[Pagination]}
-                        
+
                     >
                         {cooperation.map((item, index) => (
                             <SwiperSlide key={index}>
@@ -113,7 +113,8 @@ export default function Cooperation() {
                     </Swiper>
                 </motion.div>
 
-                <button className={`butt ${s.cooperationBut}`}>Обсудить проект</button>
+                <button data-popup
+                    data-popup-title="Обсудить проект" className={`butt ${s.cooperationBut}`}>Обсудить проект</button>
             </motion.div>
         </section>
     );

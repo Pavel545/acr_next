@@ -5,6 +5,9 @@ import { inter, unbounded } from './fonts';
 import { Header } from "@/components/shared/header/header";
 import { Footer } from "@/components/shared/footer/footer";
 import { Providers } from "./providers";
+import { ChatProvider } from "@/contexts/ChatContext";
+import AIChatWrapper from "@/components/chat/AIChatWrapper";
+import { CookieConsent } from "@/components/shared/CookieConsent/CookieConsent";
 
 
 
@@ -160,11 +163,15 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${unbounded.variable}`}>
       <body >
-        <Header/>
-        <Providers>
-          {children}
-        </Providers>
-        <Footer /> 
+        <ChatProvider>
+          <Header />
+          <Providers>
+            {children}
+          </Providers>
+          <CookieConsent/>
+          <AIChatWrapper/>
+          <Footer />
+        </ChatProvider>
       </body>
     </html>
   );

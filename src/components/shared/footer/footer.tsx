@@ -7,6 +7,7 @@ import FosFot from "@/components/ui/fosFot/fosFot";
 import { SERVICES_DATA } from "@/config/constants/services";
 import MobMenu from "@/components/ui/MobMenu/MobMenu";
 import { useMediaQuery } from "@/lib/isMobile";
+import Link from "next/link";
 
 
 
@@ -78,12 +79,15 @@ export const Footer = () => {
                             © {currentYear} АЦР. Все права защищены
                         </div>
                         <div className={s.policyLinks}>
-                            <a href="/privacy-policy" className={s.policyLink}>
+                            <Link href="/politic" className={s.policyLink}>
                                 Политика конфиденциальности
-                            </a>
-                            <a href="/terms-of-use" className={s.policyLink}>
+                            </Link>
+                            <Link href="/politika-cookies" className={s.policyLink}>
+                                Политика в отношении Cookies 
+                            </Link>
+                             <Link href="/soglasie-obrabotka-pers-dannih" className={s.policyLink}>
                                 Пользовательское соглашение
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

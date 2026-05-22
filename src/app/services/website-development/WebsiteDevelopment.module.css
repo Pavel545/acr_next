@@ -202,7 +202,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f5f7fa;
+  background: #d4e5ff;
   padding: 15px 20px;
   border-radius: 12px;
   margin-top: 10px;
@@ -290,6 +290,7 @@
     opacity: 0.4;
     bottom: auto;
     top: 50%;
+    z-index: 1;
     transform: translateY(-50%);
   }
 
@@ -320,6 +321,10 @@
   .fosBox {
     flex-direction: column !important;
     gap: 15px;
+  }
+
+  .fosBox{
+    text-align: center;
   }
 
   .but {
@@ -357,6 +362,7 @@
 
   .group {
     gap: 0.5rem;
+    z-index: 3;
   }
 
   .grup2 {

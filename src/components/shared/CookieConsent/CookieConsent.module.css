@@ -1,0 +1,384 @@
+/* CookieConsent.module.css */
+
+/* Базовые переменные (подтягиваются из глобальных) */
+.page {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+/* Cookie Mini Bar */
+.cookieMiniBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--temnyy);
+  border-top: 2px solid var(--zelenyy-2-osnovnoy);
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+.cookieMiniInner {
+  max-width: 1640px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.cookieMiniRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cookieMiniText {
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  color: var(--belyy);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.cookieMiniActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Кнопки в стиле butt/butt2 */
+.uiBtnGhost {
+  display: inline-block;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--svetlo-seryy);
+  border-radius: var(--br);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 120%;
+  color: var(--seryy);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms all ease;
+}
+
+.uiBtnGhost:hover {
+  background: var(--belyy-100);
+  color: var(--belyy);
+  border-color: var(--seryy);
+}
+
+.uiBtnTiny {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: var(--br);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 120%;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms all ease;
+}
+
+.butT1 {
+  background: var(--zelenyy-2-osnovnoy);
+  color: var(--temnyy);
+  border: none;
+}
+
+.butT1:hover {
+  background: var(--zelenyy-5);
+  color: var(--belyy);
+  transform: translateY(-1px);
+}
+
+.butT1:active {
+  background: var(--belyy);
+  color: var(--zelenyy-6);
+}
+
+.butT2 {
+  background: transparent;
+  color: var(--seryy);
+  border: 1px solid var(--svetlo-seryy);
+}
+
+.butT2:hover {
+  background: var(--belyy-100);
+  color: var(--belyy);
+  border-color: var(--seryy);
+}
+
+.uiGoldText {
+  color: var(--zelenyy-6);
+  font-weight: 500;
+}
+
+.cookieLink {
+  color: var(--siniy);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.cookieLink:hover {
+  color: var(--zelenyy-6);
+}
+
+/* Drawer / Overlay */
+.uiOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.uiDrawer {
+  background: var(--temnyy);
+  border-radius: var(--br);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid var(--svetlo-seryy);
+}
+
+.uiDrawerHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--zelenyy-2-osnovnoy);
+}
+
+.uiClose {
+  font-size: 28px;
+  color: var(--seryy);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--br);
+  transition: 300ms all ease;
+}
+
+.uiClose:hover {
+  color: var(--belyy);
+  background: var(--belyy-100);
+}
+
+/* Cookie Options */
+.cookieOpt {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--svetlo-seryy);
+}
+
+.cookieOpt:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cookieOptTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cookieOptName {
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--belyy);
+}
+
+.cookieOptDesc {
+  font-family: var(--font-family);
+  font-size: 0.8125rem;
+  color: var(--seryy);
+  line-height: 1.6;
+}
+
+/* Switch (в стиле современных UI) */
+.sw2 {
+  width: 48px;
+  height: 26px;
+  background: var(--svetlo-seryy);
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sw2[data-on="true"] {
+  background: var(--zelenyy-2-osnovnoy);
+}
+
+.sw2[data-on="true"] .sw2Dot {
+  transform: translateX(22px);
+}
+
+.sw2Dot {
+  width: 22px;
+  height: 22px;
+  background: var(--belyy);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.sw2[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Drawer Actions */
+.drawerActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--svetlo-seryy);
+  flex-wrap: wrap;
+}
+
+.drawerActions .uiBtnTiny {
+  min-width: 120px;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cookieMiniInner {
+    padding: 16px 15px;
+  }
+
+  .cookieMiniRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .cookieMiniActions {
+    justify-content: stretch;
+  }
+
+  .cookieMiniActions button {
+    flex: 1;
+  }
+
+  .cookieMiniText {
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .uiDrawer {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .drawerActions {
+    flex-direction: column;
+  }
+
+  .drawerActions button {
+    width: 100%;
+  }
+
+  .cookieOpt {
+    padding: 16px 0;
+  }
+
+  .cookieOptName {
+    font-size: 0.875rem;
+  }
+
+  .cookieOptDesc {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cookieMiniInner {
+    padding: 12px 12px;
+  }
+
+  .uiBtnGhost,
+  .uiBtnTiny {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+
+  .uiDrawer {
+    padding: 16px;
+  }
+
+  .cookieOpt {
+    padding: 12px 0;
+  }
+
+  .sw2 {
+    width: 44px;
+    height: 24px;
+  }
+
+  .sw2Dot {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sw2[data-on="true"] .sw2Dot {
+    transform: translateX(20px);
+  }
+}

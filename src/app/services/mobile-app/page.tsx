@@ -65,7 +65,7 @@ export default function MobileApp() {
                   <span>Бесплатный дизайн главного экрана приложения</span>
                 </p>
                 <button
-                  className='butt2'
+                  className={`butt2 ${s.butM}`}
                   data-popup
                   data-popup-title="Бесплатный дизайн главного экрана приложения"
                 >

@@ -124,7 +124,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f5f7fa;
+  background: #d4e5ff;
   padding: 15px 20px;
   border-radius: 12px;
   margin-top: 10px;
@@ -184,7 +184,9 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-
+.butM {
+  margin: 0 auto;
+}
   .left {
     gap: 24px;
   }
@@ -293,6 +295,9 @@
   .fosBox {
     flex-direction: column !important;
     gap: 15px;
+    margin: 20px 10px;
+
+    text-align: center;
   }
 
   .but {

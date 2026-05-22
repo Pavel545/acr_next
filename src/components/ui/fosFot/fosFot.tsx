@@ -303,7 +303,7 @@ export default function FosFot({
                             {defaultTitle}
                         </h3>
                         <p className={`t16 ${s.agreement}`}>
-                            Заполните контактные данные, наш сотрудник свяжется с Вами в течении рабочего времени
+                            Заполните контактные данные, наш сотрудник свяжется с Вами в течение рабочего времени
                         </p>
                         
                         <div className={s.basa4}>
@@ -398,7 +398,7 @@ export default function FosFot({
                             />
                             <span>
                                 Я ознакомился с {" "} 
-                                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+                                <a href="/soglasie-obrabotka-pers-dannih" target="_blank" rel="noopener noreferrer">
                                     Правилами обработки персональных данных
                                 </a>
                             </span>

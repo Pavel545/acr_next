@@ -157,7 +157,9 @@
     margin-top: 2px;
     flex-shrink: 0;
 }
-
+.checkbox a{
+    text-decoration: underline;
+}
 .checkbox.errorText {
     color: #ef4444;
 }
