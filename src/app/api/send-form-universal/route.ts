@@ -8,8 +8,8 @@ const smtpConfig = {
   port: 465,
   secure: true,
   auth: {
-    user: 'ForAnalyticss@yandex.ru',
-    pass: 'mrsezovxgogmbqfz',
+    user: process.env.SMTP_USER, // Измените на правильный email
+    pass: process.env.SMTP_PASS, // Нужно указать правильный пароль!
   },
 };
 

@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  output: 'standalone',
   reactCompiler: true,
 
   // Конфигурация для Turbopack (заменяет webpack)
