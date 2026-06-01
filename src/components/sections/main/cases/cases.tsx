@@ -11,7 +11,6 @@ const cases = [
         id: 1,
         name: "ЧАТ-БОТ + САЙТ ВНУТРИ MAX",
         title: 'Пациенты всегда могут записаться на прием - даже при ограничении мобильного интернета',
-        tags: ['Привлечение', 'Сервис', 'Лояльность', 'Конверсия', 'Аналитика'],
         goal:
             'Обеспечить пациентам бесперебойную онлайн-запись 24/7 даже при слабом интернете, разгрузить администраторов и увеличить конверсию в реальную запись на 20–40% за счёт автоматизации и ИИ',
         results: [
@@ -25,8 +24,48 @@ const cases = [
             'Высокая скорость и полная независимость от качества интернета'
         ],
         price: 'Стоимость интеграции «под ключ»:<b> 200 000 ₽</b>',
-        image: '/img/case/3.jpg',
+        image: '/img/case/3.webp',
         presentation: '/docs/КП Стоматология.pdf'
+    },
+    {
+        id: 2,
+        name: "Кабинет дилера  на базе 1С битрикс",
+        title: 'Разработка, интеграция и сопровождение  для предприятий, заводов и крупных компаний',
+        goal:
+            'Проект направлен на автоматизацию бизнес-процессов  и интеграцию с системой электронного документооборота (ЭДО),  что поможет оптимизировать рабочее время, повысить эффективность работы и увеличить прибыль компании',
+        results: [
+            'Круглосуточный доступ к каталогу товаров',
+            'Упрощённый и быстрый поиск с многоуровневой фильтрацией',
+            'Возможность самостоятельного оформления заказов в удобное время',
+            'Гибкий выбор графика доставки',
+            'Персонализированный вывод товаров с учетом скидок',
+            'Интеграция с системой ЭДО и автоматизация бизнес-процессов',
+            'Повышение эффективности работы',
+            'Увеличение прибыли компании'
+        ],
+        price: 'Стоимость личного кабинета:<b> 500 000 ₽</b>',
+        image: '/img/case/1.webp',
+        presentation: '/docs/ЛК дилер.pdf'
+    },
+    {
+        id: 3,
+        name: "ЦИФРОВАЯ ЭКОСИСТЕМА ДЕВЕЛОПЕРА 360°",
+        title: 'Разработка, интеграция и сопровождение  для предприятий, заводов и крупных компаний',
+        goal:
+            'Проект направлен на автоматизацию бизнес-процессов  и интеграцию с системой электронного документооборота (ЭДО),  что поможет оптимизировать рабочее время, повысить эффективность работы и увеличить прибыль компании',
+        results: [
+            'Круглосуточный доступ к каталогу товаров',
+            'Упрощённый и быстрый поиск с многоуровневой фильтрацией',
+            'Возможность самостоятельного оформления заказов в удобное время',
+            'Гибкий выбор графика доставки',
+            'Персонализированный вывод товаров с учетом скидок',
+            'Интеграция с системой ЭДО и автоматизация бизнес-процессов',
+            'Повышение эффективности работы',
+            'Увеличение прибыли компании'
+        ],
+        price: 'Стоимость личного кабинета:<b> 500 000 ₽</b>',
+        image: '/img/case/2.webp',
+        presentation: '/docs/КП застройщики АКВИЛОН.pdf'
     }
 ]
 
@@ -99,9 +138,10 @@ export default function Cases() {
         setIndex((prev) => (prev - 1 + cases.length) % cases.length)
     }
 
-    const visibleResults = showAllResults
-        ? caseItem.results
-        : caseItem.results.slice(0, 3)
+    // const visibleResults = showAllResults
+    //     ? caseItem.results
+    //     : caseItem.results.slice(0, 3)
+        const visibleResults = caseItem.results;
 
     const hasHiddenResults = caseItem.results.length > 3
 
@@ -168,25 +208,26 @@ export default function Cases() {
                             <h2 className={s.caseNumber}>
                                 {caseItem.name}
                             </h2>
+                            {/* {
+                                caseItem?.tags && <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={caseItem.id}
+                                        variants={containerStagger}
+                                        initial="hidden"
+                                        animate="show"
+                                        exit="hidden"
+                                    >
+                                        <div className={s.tags}>
+                                            {caseItem.tags.map((tag) => (
+                                                <motion.span key={tag} variants={fadeUp}>
+                                                    {tag}
+                                                </motion.span>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                </AnimatePresence>
+                            } */}
 
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={caseItem.id}
-                                    variants={containerStagger}
-                                    initial="hidden"
-                                    animate="show"
-                                    exit="hidden"
-                                >
-                                    {/* TAGS */}
-                                    <div className={s.tags}>
-                                        {caseItem.tags.map((tag) => (
-                                            <motion.span key={tag} variants={fadeUp}>
-                                                {tag}
-                                            </motion.span>
-                                        ))}
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
                         </div>
 
                         <AnimatePresence mode="wait">
@@ -234,7 +275,7 @@ export default function Cases() {
                                         <span className={s.label}>Результат:</span>
                                         {isMobile && (
                                             <span className={s.accordionIcon}>
-                                                {resultsOpen ? '−' : '+'}
+                                                {resultsOpen ? '-' : '+'}
                                             </span>
                                         )}
                                     </button>
@@ -255,7 +296,7 @@ export default function Cases() {
                                                     ))}
                                                 </motion.ul>
 
-                                                <AnimatePresence initial={false}>
+                                                {/* <AnimatePresence initial={false}>
                                                     {showAllResults && hasHiddenResults && (
                                                         <motion.ul
                                                             className={s.list}
@@ -271,16 +312,16 @@ export default function Cases() {
                                                             ))}
                                                         </motion.ul>
                                                     )}
-                                                </AnimatePresence>
+                                                </AnimatePresence> */}
 
-                                                {hasHiddenResults && (
+                                                {/* {hasHiddenResults && (
                                                     <button
                                                         className={s.moreBtn}
                                                         onClick={() => setShowAllResults(prev => !prev)}
                                                     >
                                                         {showAllResults ? 'Скрыть' : 'Показать ещё'}
                                                     </button>
-                                                )}
+                                                )} */}
                                             </motion.div>
                                         )}
                                     </AnimatePresence>

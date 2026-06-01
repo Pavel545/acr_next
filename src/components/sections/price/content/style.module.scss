@@ -1,0 +1,381 @@
+.priceContant {
+    padding: 70px 0;
+}
+
+
+
+.content {
+    display: grid;
+    grid-template-columns: 420px 4.5fr;
+
+    gap: 100px;
+    min-height: 80vh;
+}
+
+.left {
+    position: sticky;
+    top: 70px;
+    height: fit-content;
+
+
+    &List {
+    }
+
+
+    &Item {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 120%;
+        list-style: none;
+        position: relative;
+        padding: 10px 0;
+        cursor: pointer;
+        width: fit-content;
+        transition: 300ms all;
+
+        &::before {
+            content: "";
+            transition: 300ms all;
+        }
+
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        /* 
+        Градиент: слева серый, справа серый = текст серый.
+        Но transition на background-size сдвигает границу зелёного.
+      */
+        background-image: linear-gradient(to right,
+            var(--zelenyy-2-osnovnoy) 0%,
+            var(--zelenyy-4) 50%,
+            var(--seryy) 50%,
+            var(--seryy) 100%);
+
+        /* 
+        Растягиваем градиент вдвое шире элемента 
+        и сдвигаем вправо, чтобы была видна только серая половина.
+      */
+        background-size: 200% 100%;
+        background-position: 100% 0%;
+
+        /* Плавность — можно поиграть с кривой */
+        transition: background-position 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background: var(--zelenyy-4);
+            border-radius: 2px;
+
+            /* Сжато влево в покое */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        &:hover {
+            background-position: 0% 0%;
+
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+
+        &.active {
+            background-position: 0% 0%;
+            color: var(--belyy);
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0px;
+                width: 100%;
+                height: 2px;
+                background-color: var(--belyy);
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &:active {
+            background-position: 0% 0%;
+            color: var(--belyy);
+            transform: scale(0.98);
+
+        }
+    }
+
+
+    .label {
+        position: relative;
+        display: block;
+        width: 100%;
+
+
+        background: #ffffff1c;
+        backdrop-filter: blur(10px);
+        border-radius: 5px;
+        margin-bottom: 30px;
+
+        input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--belyy-300);
+            background-color: transparent;
+            color: var(--belyy);
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 120%;
+
+            &:focus {
+                outline: none;
+                border-color: var(--zelenyy-4);
+            }
+
+            &::placeholder {
+                color: var(--belyy-300);
+            }
+        }
+    }
+
+    .searchIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .clearSearch {
+        position: absolute;
+        right: 45px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--belyy-300);
+        font-size: 20px;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: var(--belyy);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .searchResults {
+        margin-bottom: 20px;
+
+        .searchInfo {
+            font-size: 14px;
+            color: var(--belyy-300);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--belyy-300);
+        }
+    }
+
+    .leftList {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        padding-right: 10px;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--belyy-100);
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--zelenyy-4);
+            border-radius: 2px;
+        }
+    }
+
+    .matchCount {
+        background: var(--belyy-100);
+        color: var(--zelenyy-2-osnovnoy);
+        border-radius: 12px;
+        padding: 2px 8px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 12px;
+    }
+
+    .highlight {
+        background: var(--zelenyy-4);
+        color: var(--belyy);
+        padding: 0 4px;
+        border-radius: 3px;
+    }
+
+    .noResults {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--belyy-300);
+        font-size: 16px;
+    }
+
+    .noResultsRight {
+        text-align: center;
+        padding: 60px 20px;
+
+        p {
+            color: var(--belyy-300);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .resetButton {
+            background: var(--zelenyy-2-osnovnoy);
+            color: var(--belyy);
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 16px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: var(--zelenyy-4);
+                transform: translateY(-2px);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+    }
+
+}
+
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+     max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    padding-right: 10px;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--belyy-100);
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--zelenyy-4);
+        border-radius: 2px;
+    }
+
+    .servis {
+        font-family: var(--second-family);
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 120%;
+        text-transform: uppercase;
+        color: var(--zelenyy-2-osnovnoy);
+
+        margin-bottom: 20px;
+    }
+
+    .price {
+
+        &List {}
+
+        &Item {
+               scroll-margin-top: 80px;  // ← Отступ при скролле
+            display: grid;
+            grid-template-columns: 2fr 1fr 65px ;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 120%;
+            list-style: none;
+            padding: 40px 90px;
+            border-bottom: 1px solid var(--belyy-300);
+            cursor: pointer;
+            transition: 300ms all;
+
+            &:hover {
+                background: var(--belyy-100);
+                backdrop-filter: blur(10px);
+                .arrow {
+                    transform: translateX(5px);
+                }
+            }
+
+            &:active {
+                background: var(--belyy-300);
+                backdrop-filter: blur(10px);
+                transform: scale(0.98);
+            }
+
+            .name {
+                font-weight: 500;
+                font-size: 25px;
+                line-height: 120%;
+                color: var(--belyy);
+            }
+
+            .price {
+                font-weight: 500;
+                font-size: 25px;
+                line-height: 120%;
+                color: var(--zelenyy-2-osnovnoy);
+            }
+
+
+            .arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease;
+  width: 65px;
+                height: 65px;
+                border-radius: 50%;
+               background: var(--belyy-100);
+               
+            }
+        }
+    }
+
+
+}
+
+
+.button {
+    margin-top: 40px;
+}
+
+

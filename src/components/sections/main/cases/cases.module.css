@@ -38,8 +38,8 @@
 
 @media (min-width: 1024px) {
     .cases__content {
-        grid-template-columns: 1fr 1.2fr;
-        gap: 80px;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 }
 
@@ -172,6 +172,7 @@
     font-family: var(--second-family);
     font-size: 32px;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
@@ -183,7 +184,7 @@
 
 @media (min-width: 1024px) {
     .caseNumber {
-        font-size: 48px;
+        font-size: 45px;
         margin-bottom: 30px;
     }
 }
@@ -250,8 +251,8 @@
 
 @media (min-width: 768px) {
     .text {
-        font-size: 16px;
-        max-width: 420px;
+        font-size: 18px;
+        max-width: 630px;
     }
 }
 
@@ -275,7 +276,7 @@
 
 @media (min-width: 768px) {
     .list li {
-        font-size: 14px;
+        font-size: 18px;
     }
 }
 
@@ -320,6 +321,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+
+    max-width: 563px;
 }
 
 .butt {
