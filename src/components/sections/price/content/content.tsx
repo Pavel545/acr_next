@@ -4,13 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import s from "./style.module.scss";
 import data from "./price-list.json";
 import Serch from "@/assets/icons/serch.svg";
+import { useMediaQuery } from "@/lib/isMobile";
 
 export default function PriceContant() {
     const [activeItem, setActiveItem] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredData, setFilteredData] = useState(data);
+    const [showScrollButton, setShowScrollButton] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
     const rightSectionRef = useRef<HTMLDivElement>(null);
     const leftListRef = useRef<HTMLOListElement>(null);
+    const isMobile = useMediaQuery("(max-width: 1200px)")
 
     // Filter data based on search term
     useEffect(() => {
@@ -46,6 +50,40 @@ export default function PriceContant() {
             });
         }
     }, [searchTerm]);
+
+    // Handle scroll button visibility on mobile
+    useEffect(() => {
+        if (!isMobile) return;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show button when scrolling up
+            if (currentScrollY < lastScrollY && currentScrollY > 300) {
+                setShowScrollButton(true);
+            } 
+            // Hide button when scrolling down or at the top
+            else if (currentScrollY > lastScrollY || currentScrollY <= 300) {
+                setShowScrollButton(false);
+            }
+            
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [isMobile, lastScrollY]);
+
+    // Scroll to top function
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
     // Smooth scroll to service section
     const scrollToService = (index: number) => {
@@ -189,7 +227,7 @@ export default function PriceContant() {
                                 animate={{ opacity: 1, scale: 1 }}
                             >
                                 <p>По вашему запросу "{searchTerm}" ничего не найдено</p>
-                                <button onClick={clearSearch} className={s.resetButton}>
+                                <button onClick={clearSearch} className={`${s.resetButton} butt`}>
                                     Очистить поиск
                                 </button>
                             </motion.div>
@@ -197,6 +235,25 @@ export default function PriceContant() {
                     </div>
                 </div>
             </div>
+
+            {/* Scroll to top button for mobile */}
+            <AnimatePresence>
+                {isMobile && showScrollButton && (
+                    <motion.button
+                        className={s.scrollToTop}
+                        onClick={scrollToTop}
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                        transition={{ duration: 0.2 }}
+                        aria-label="Scroll to top"
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 4L12 20M12 4L18 10M12 4L6 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     )
 }

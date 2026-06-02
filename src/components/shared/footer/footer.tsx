@@ -40,7 +40,7 @@ export const Footer = () => {
                             <nav className={s.social_links}>
                                 {SOCIAL_LINKS.map((link) => (
                                     <a key={link.name + "_foot"} href={link.href} className={s.social_link} target="_blank" rel="noopener noreferrer">
-                                        <Image className={s.social_link_image} src={`/${link.icon}`} alt={link.name} width={45} height={45} />
+                                        <Image className={s.social_link_image} src={`${link.icon}`} alt={link.name} width={45} height={45} />
                                     </a>
                                 ))}
                             </nav>
@@ -61,7 +61,7 @@ export const Footer = () => {
                         <nav className={s.social_links}>
                             {SOCIAL_LINKS.map((link) => (
                                 <a key={link.name + "_foot"} href={link.href} className={s.social_link} target="_blank" rel="noopener noreferrer">
-                                    <Image className={s.social_link_image} src={`/${link.icon}`} alt={link.name} width={45} height={45} />
+                                    <Image className={s.social_link_image} src={`${link.icon}`} alt={link.name} width={45} height={45} />
                                 </a>
                             ))}
                         </nav>
@@ -79,6 +79,9 @@ export const Footer = () => {
                             © {currentYear} АЦР. Все права защищены
                         </div>
                         <div className={s.policyLinks}>
+                            <Link href="/partners" className={s.policyLink}>
+                                Партнёрское соглашение
+                            </Link>
                             <Link href="/politic" className={s.policyLink}>
                                 Политика конфиденциальности
                             </Link>

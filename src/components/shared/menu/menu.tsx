@@ -15,7 +15,8 @@ export default function Menu({ isHovered, className }: { isHovered: boolean; cla
                 {NAVIGATION_LINKS.map((link) => {
                     const IconComponent = link.icons;
 
-                    return (
+                    if (IconComponent) {
+                        return (
                         <motion.a
                             key={link.name}
                             href={link.href}
@@ -43,6 +44,7 @@ export default function Menu({ isHovered, className }: { isHovered: boolean; cla
                             </AnimatePresence>
                         </motion.a>
                     );
+                    }
                 })}
             </nav>
         </div>

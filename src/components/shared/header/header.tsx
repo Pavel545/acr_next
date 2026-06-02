@@ -15,7 +15,7 @@ export const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
-    const isMobile = useMediaQuery("(max-width: 768px)")
+    const isMobile = useMediaQuery("(max-width: 1200px)")
 
     useEffect(() => {
         const controlHeader = () => {
@@ -56,7 +56,8 @@ export const Header = () => {
                         {/* desktop socials */}
                         <nav className={`${s.socials} ${menuOpen ? s.open : ''}`}>
                             {SOCIAL_LINKS.map((link, index) => (
-                                <a
+                                link.icon && (
+                                    <a
                                     key={link.name}
                                     href={link.href}
                                     target="_blank"
@@ -65,12 +66,13 @@ export const Header = () => {
                                     className={s.social}
                                 >
                                     <Image
-                                        src={`/${link.icon}`}
+                                        src={`${link.icon}`}
                                         alt={link.name}
                                         width={40}
                                         height={40}
                                     />
                                 </a>
+                                )
                             ))}
                         </nav>
 

@@ -10,16 +10,27 @@
 
     gap: 100px;
     min-height: 80vh;
+
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr;
+
+    }
 }
 
 .left {
     position: sticky;
-    top: 70px;
+    top: 120px;
     height: fit-content;
 
+    @media screen and (max-width: 1200px) {
+        position: static;
+        width: 100%;
 
-    &List {
+        overflow: hidden;
+
     }
+
 
 
     &Item {
@@ -113,6 +124,9 @@
             transform: scale(0.98);
 
         }
+
+
+        @media screen and (max-width: 1200px) {}
     }
 
 
@@ -201,6 +215,21 @@
             width: 4px;
         }
 
+        @media screen and (max-width: 1200px) {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            overflow-x: scroll;
+            white-space: nowrap;
+            padding: 10px 0;
+
+            &::-webkit-scrollbar {
+                width: 2px;
+                height: 2px;
+            }
+        }
+
+
         &::-webkit-scrollbar-track {
             background: var(--belyy-100);
             border-radius: 2px;
@@ -236,47 +265,48 @@
         font-size: 16px;
     }
 
-    .noResultsRight {
-        text-align: center;
-        padding: 60px 20px;
 
-        p {
-            color: var(--belyy-300);
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .resetButton {
-            background: var(--zelenyy-2-osnovnoy);
-            color: var(--belyy);
-            border: none;
-            border-radius: 5px;
-            padding: 12px 24px;
-            cursor: pointer;
-            font-family: var(--font-family);
-            font-size: 16px;
-            transition: all 0.3s ease;
-
-            &:hover {
-                background: var(--zelenyy-4);
-                transform: translateY(-2px);
-            }
-
-            &:active {
-                transform: translateY(0);
-            }
-        }
-    }
 
 }
 
+.noResultsRight {
+    text-align: center;
+    padding: 60px 20px;
+
+    p {
+        color: var(--belyy-300);
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    .resetButton {
+        background: var(--zelenyy-2-osnovnoy);
+        color: var(--temnyy);
+        border: none;
+        border-radius: 5px;
+        padding: 12px 24px;
+        cursor: pointer;
+        font-family: var(--font-family);
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: var(--zelenyy-4);
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
 
 .right {
     display: flex;
     flex-direction: column;
     gap: 70px;
 
-     max-height: calc(100vh - 70px);
+    max-height: calc(100vh - 70px);
     overflow-y: auto;
     padding-right: 10px;
 
@@ -294,15 +324,23 @@
         border-radius: 2px;
     }
 
+    @media screen and (max-width: 1200px) {
+        max-height: none;
+    }
+
     .servis {
         font-family: var(--second-family);
         font-weight: 700;
-        font-size: 35px;
+        font-size: clamp(20px, 2.1rem, 35px);
         line-height: 120%;
         text-transform: uppercase;
         color: var(--zelenyy-2-osnovnoy);
 
         margin-bottom: 20px;
+
+        @media screen and (max-width: 1200px) {
+            // font-size: 20px;
+        }
     }
 
     .price {
@@ -310,9 +348,9 @@
         &List {}
 
         &Item {
-               scroll-margin-top: 80px;  // ← Отступ при скролле
+            scroll-margin-top: 80px; // ← Отступ при скролле
             display: grid;
-            grid-template-columns: 2fr 1fr 65px ;
+            grid-template-columns: 2fr 1fr 65px;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
@@ -327,12 +365,23 @@
             cursor: pointer;
             transition: 300ms all;
 
+
+
             &:hover {
                 background: var(--belyy-100);
                 backdrop-filter: blur(10px);
+
                 .arrow {
                     transform: translateX(5px);
                 }
+            }
+
+            @media screen and (max-width: 1200px) {
+                padding: 20px 45px;
+            }
+
+            @media screen and (max-width: 475px) {
+                padding: 10px 16px;
             }
 
             &:active {
@@ -343,16 +392,24 @@
 
             .name {
                 font-weight: 500;
-                font-size: 25px;
+                font-size: clamp(14px, 2.5rem, 25px);
                 line-height: 120%;
                 color: var(--belyy);
+
+                @media screen and (max-width: 475px) {
+                    font-size: 14px;
+                }
             }
 
             .price {
                 font-weight: 500;
-                font-size: 25px;
+                font-size: clamp(14px, 2.5rem, 25px);
                 line-height: 120%;
                 color: var(--zelenyy-2-osnovnoy);
+
+                @media screen and (max-width: 475px) {
+                    font-size: 14px;
+                }
             }
 
 
@@ -361,11 +418,11 @@
                 align-items: center;
                 justify-content: center;
                 transition: transform 0.3s ease;
-  width: 65px;
+                width: 65px;
                 height: 65px;
                 border-radius: 50%;
-               background: var(--belyy-100);
-               
+                background: var(--belyy-100);
+
             }
         }
     }
@@ -373,9 +430,52 @@
 
 }
 
+.scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--zelenyy-2-osnovnoy);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--temnyy);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    &:hover {
+        background: var(--zelenyy-4);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
 
 .button {
     margin-top: 40px;
 }
-
-
