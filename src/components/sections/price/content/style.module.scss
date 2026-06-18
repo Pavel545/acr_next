@@ -328,6 +328,11 @@
         max-height: none;
     }
 
+    @media screen and (max-width: 575px) {
+        gap: 40px;
+
+    }
+
     .servis {
         font-family: var(--second-family);
         font-weight: 700;
@@ -338,8 +343,9 @@
 
         margin-bottom: 20px;
 
-        @media screen and (max-width: 1200px) {
-            // font-size: 20px;
+        @media screen and (max-width: 575px) {
+            font-size: 16px;
+
         }
     }
 
@@ -382,12 +388,16 @@
 
             @media screen and (max-width: 475px) {
                 padding: 10px 16px;
+                grid-template-columns: 2fr 1.3fr 40px;
+                gap: 10px;
+
             }
 
             &:active {
                 background: var(--belyy-300);
                 backdrop-filter: blur(10px);
                 transform: scale(0.98);
+
             }
 
             .name {
@@ -423,6 +433,10 @@
                 border-radius: 50%;
                 background: var(--belyy-100);
 
+                @media screen and (max-width: 575px) {
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
     }

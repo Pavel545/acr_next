@@ -44,8 +44,7 @@ export default function WebsitePolicy({ onGetFree }: WebsitePolicyProps) {
             </div>
 
             <p className={`${s.ps} ${s.siniy} ${s.t25}`}>
-              * Обеспечим полную правовую безопасность вашего бизнеса в
-              цифровой среде
+              * Обеспечим полную правовую безопасность вашего бизнеса в цифровой среде
             </p>
           </div>
 

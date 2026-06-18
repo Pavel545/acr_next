@@ -1,0 +1,111 @@
+.servicesFaq {
+    padding: 120px 0;
+}
+
+
+.faq {
+    margin: 50px 0;
+
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+
+    &Item {
+        padding: 30px;
+
+        border-bottom: 1px solid var(--temnyy-300);
+        border-radius: 10px;
+
+        display: grid;
+        grid-template-columns: 3fr 2fr 0.5fr;
+        gap: 30px;
+        position: relative;
+
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+
+
+        &Header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .question {
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: clamp(18px, 2vw, 30px);
+            line-height: 120%;
+            color: var(--temnyy);
+        }
+
+        .answer {
+            font-family: var(--font-family);
+            line-height: 130%;
+            color: var(--seryy);
+        }
+
+        &:hover {
+            .buts {
+
+                &::after {
+                    transform: rotate(0deg);
+                }
+
+                &::before {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        .buts {
+            width: 70px;
+            height: 70px;
+            background: #eeeeeea3;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+
+            &::after {
+                content: "";
+                width: 20px;
+                height: 2px;
+                background: var(--temnyy);
+                transform: rotate(90deg);
+                transition: transform 0.3s ease;
+                position: absolute;
+            }
+
+            &::before {
+                content: "";
+                width: 20px;
+                height: 2px;
+                background: var(--temnyy);
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+                position: absolute;
+            }
+
+
+
+            &.active {
+
+                &::after {
+                    transform: rotate(0deg);
+                }
+
+                &::before {
+                    transform: rotate(0deg);
+                }
+
+
+            }
+        }
+
+
+    }
+}

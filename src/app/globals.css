@@ -1,7 +1,4 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+
 
 
 :root {
@@ -29,6 +26,11 @@
   --gradient: linear-gradient(180deg, #000512 0%, #000f35 100%);
 }
 
+:root {
+  --background: var(--svetlyy);
+  --foreground: var(--temnyy);
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -42,6 +44,7 @@ body {
   background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 * {
@@ -146,6 +149,28 @@ button {
   color: var(--belyy);
 }
 
+
+.butt3 {
+  border-radius: 5px;
+  padding: 10px;
+  background: var(--belyy);
+
+ font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: var(--temnyy);
+
+  transition: 300ms all ease;
+  font-weight: 500;
+}
+
+.butt3:hover {
+  background: var(--zelenyy-5);
+  color: var(--belyy);
+}
+
 .butt:hover {
   background: var(--belyy);
   color: var(--temnyy);
@@ -165,9 +190,14 @@ button {
 .h2 {
   font-family: var(--second-family);
   font-weight: 700;
-  font-size: clamp(25px, 2.2vw, 40px);
+  font-size: clamp(25px, 2.2vw, 45px);
   line-height: 110%;
   text-transform: uppercase;
+}
+.h2 span {
+
+  all: unset;
+  color: var(--siniy);
 }
 
 .h3 {
@@ -287,68 +317,68 @@ button {
 }
 
 
-.linkNorm{
-        font-family: var(--font-family);
-        font-weight: 500;
-        line-height: 120%;
-        color: var(--temnyy);
-        position: relative;
-        padding: 10px 0;
-        transition: 300ms all;
+.linkNorm {
+  font-family: var(--font-family);
+  font-weight: 500;
+  line-height: 120%;
+  color: var(--temnyy);
+  position: relative;
+  padding: 10px 0;
+  transition: 300ms all;
 
-        width: fit-content;
+  width: fit-content;
 
-        /* 
+  /* 
         ======= ВОТ ГЛАВНАЯ МАГИЯ =======
         1. Делаем текст прозрачным
         2. Градиент показываем только там, где есть буквы
       */
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 
-        /* 
+  /* 
         Градиент: слева серый, справа серый = текст серый.
         Но transition на background-size сдвигает границу зелёного.
       */
-        background-image: linear-gradient(to right,
-                var(--zelenyy-6) 0%,
-                var(--zelenyy-5) 50%,
-                var(--temnyy) 50%,
-                var(--temnyy) 100%);
+  background-image: linear-gradient(to right,
+      var(--zelenyy-6) 0%,
+      var(--zelenyy-5) 50%,
+      var(--temnyy) 50%,
+      var(--temnyy) 100%);
 
-        /* 
+  /* 
         Растягиваем градиент вдвое шире элемента 
         и сдвигаем вправо, чтобы была видна только серая половина.
       */
-        background-size: 200% 100%;
-        background-position: 100% 0%;
+  background-size: 200% 100%;
+  background-position: 100% 0%;
 
-        /* Плавность — можно поиграть с кривой */
-        transition: background-position 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Плавность — можно поиграть с кривой */
+  transition: background-position 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background: var(--zelenyy-4);
-            border-radius: 2px;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--zelenyy-4);
+    border-radius: 2px;
 
-            /* Сжато влево в покое */
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+    /* Сжато влево в покое */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
 
-        &:hover {
-            background-position: 0% 0%;
+  &:hover {
+    background-position: 0% 0%;
 
 
-            &::after {
-                transform: scaleX(1);
-            }
-        }
+    &::after {
+      transform: scaleX(1);
     }
+  }
+}

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Services() {
     return (
-        <section className={s.services}>
+        <section id='services' className={s.services}>
             <div className='container'>
                 <div className={s.servicesHeader}>
                

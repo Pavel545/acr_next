@@ -1,0 +1,75 @@
+.servicesAdvantages {
+    padding:140px 0 ;
+}
+
+.title{
+    max-width: 1080px;
+    text-transform: uppercase;
+    
+}
+
+
+.advantages{
+    margin:90px 0 60px;
+
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+}
+
+.iconBox{
+    width: 55px ;
+    height: 55px;
+}
+
+.icon{
+    width: 100%;
+    height: 100%;
+}
+
+.advantage{
+background: var(--belyy);
+border-radius: 10px;
+padding: 25px;
+}
+
+.advantageTitle{
+   font-family: var(--second-family);
+    font-weight: 700;
+    font-size: clamp(16px, 1.5rem, 25px);
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--temnyy);
+
+    margin:40px 0 20px;
+
+    max-width: 400px;
+}
+
+.advantageDescription{
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: clamp(12px, 1rem, 16px);
+    line-height: 120%;
+    color: var(--seryy);
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.buts{
+    background: var(--siniy);
+    color: var(--belyy);
+
+
+    &:hover{
+        background: var(--zelenyy-2-osnovnoy);
+        
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}

@@ -1,0 +1,173 @@
+.servicesPackages {
+    padding: 120px;
+
+
+}
+
+
+.packages {
+    margin: 50px 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 550px;
+
+    gap: 20px;
+}
+
+
+.package {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    &Header {
+        padding: 30px;
+
+        background: var(--belyy);
+
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    &Body {
+
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--belyy);
+
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feature {
+        font-family: var(--font-family);
+        font-weight: 500;
+        line-height: 130%;
+        color: var(--seryy);
+
+        &::marker {
+            color: var(--siniy);
+        }
+    }
+
+    .icon {
+
+        background: #eeeeeea3;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+
+        path {
+            transition: fill 0.3s ease;
+            fill: var(--temnyy);
+        }
+
+    }
+
+    .timeline {
+        font-family: var(--font-family);
+        font-weight: 500;
+        line-height: 130%;
+        color: var(--temnyy);
+    }
+
+    .price {
+        font-family: var(--second-family);
+        font-weight: 700;
+        font-size: clamp(18px, 2rem, 45px);
+        line-height: 120%;
+        text-transform: uppercase;
+        color: var(--temnyy);
+
+        transition: color 0.3s ease;
+    }
+
+    &Content {
+        padding: 30px;
+
+
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+
+
+    }
+
+    &Info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        margin-top: auto;
+    }
+
+    &Title {
+        font-family: var(--second-family);
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 120%;
+        text-transform: uppercase;
+        color: var(--temnyy);
+
+        transition: color 0.3s ease;
+
+
+    }
+
+    &Footer {
+        border-radius: 0 0 10px 10px;
+        margin-top: auto;
+
+        .buts {
+            width: 100%;
+            padding: 15px;
+
+            border-radius: 0 0 10px 10px;
+
+            background: var(--zelenyy-2-osnovnoy);
+
+
+            &:hover {
+                color: var(--belyy);
+                background: var(--zelenyy-4);
+            }
+        }
+    }
+
+
+    &:hover {
+        transform: translateY(-1px);
+
+        .packageHeader {
+            background: linear-gradient(44deg, #023ac8 0%, #000512 50%, #023ac8 100%);
+        }
+
+        .packageTitle {
+            color: var(--zelenyy-2-osnovnoy);
+        }
+
+        .icon {
+            background: #eeeeee39;
+
+            path {
+                fill: var(--zelenyy-2-osnovnoy);
+            }
+        }
+
+        .price {
+            color: var(--siniy);
+        }
+    }
+}

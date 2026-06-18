@@ -1,0 +1,173 @@
+.content {
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    padding-top: 120px;
+    position: relative;
+}
+
+.title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: clamp(32px, 4rem, 60px);
+    line-height: 110%;
+    text-transform: uppercase;
+    color: var(--belyy);
+}
+
+.title span {
+    all: unset;
+    color: var(--zelenyy-2-osnovnoy);
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.heroHeading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 50px;
+    padding-bottom: 70px;
+    position: relative;
+}
+
+.description {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: clamp(16px, 2rem, 30px);
+    line-height: 120%;
+    color: var(--belyy);
+    max-width: 700px;
+}
+
+.services {
+    padding-top: 30px;
+    padding-bottom: 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.247);
+}
+
+.servicesTitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: var(--belyy);
+}
+
+.servicesList {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.servicesList.collapsed {
+    /* Стили для свернутого состояния */
+}
+
+.buts{
+    padding: 16px 85px;
+}
+/* Адаптив */
+@media (max-width: 1440px) {}
+
+@media (max-width: 1200px) {
+    .heroHeading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+        padding-bottom: 50px;
+    }
+
+    .title {
+        font-size: 34px;
+        text-align: center;
+    }
+
+    .services {
+        padding-bottom: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .servicesList {
+        gap: 8px;
+    }
+
+    .services {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+        margin: 15px 0;
+    }
+
+    .heroHeading {
+        padding-bottom: 30px;
+        gap: 20px;
+    }
+
+    .services {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+
+    .servicesTitle {
+        font-size: 16px;
+    }
+
+    .servicesList {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: 24px;
+        text-align: start;
+        line-height: 1.2;
+    }
+
+    .services {
+        display: none;
+    }
+
+    .content {
+        padding-bottom: 10vh;
+        justify-content: flex-end;
+    }
+
+    .heroHeading {
+        padding-bottom: 20px;
+    }
+
+    .services {
+        padding-bottom: 30px;
+    }
+
+    .servicesTitle {
+        font-size: 14px;
+    }
+
+    .heroHeading {
+        height: 100%;
+    }
+
+    .buts {
+        margin-top: min(10vh, 180px);
+    }
+}

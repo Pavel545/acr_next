@@ -1,0 +1,127 @@
+// contacts.module.scss
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+}
+
+.linkBox {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 67px 0;
+
+    @media (max-width: 1024px) {
+        padding: 40px 0;
+        gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 30px 0 0;
+        gap: 35px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 30px;
+    }
+}
+
+.item {
+    .title {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: clamp(12px, 1.2rem, 18px);
+        line-height: 130%;
+        color: var(--seryy);
+        margin-bottom: 15px;
+
+        @media (max-width: 480px) {
+            margin-bottom: 10px;
+        }
+    }
+
+    .link {
+        font-family: var(--second-family);
+        font-weight: 700;
+        font-size: clamp(16px, 1.5rem, 25px);
+        line-height: 120%;
+        text-transform: uppercase;
+        transition: 300ms all;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-image: linear-gradient(to right,
+                var(--siniy) 0%,
+                var(--siniy) 50%,
+                var(--temnyy) 50%,
+                var(--temnyy) 100%);
+        background-size: 200% 100%;
+        background-position: 100% 0%;
+        transition: background-position 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+        word-break: break-word;
+        display: inline-block;
+
+        @media (max-width: 480px) {
+            font-size: clamp(14px, 1.3rem, 20px);
+        }
+
+        &:hover {
+            background-position: 0% 0%;
+        }
+    }
+
+    .soc {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .social_link_image {
+        border-radius: 5px;
+        transition: 300ms all;
+
+
+        path {
+            fill: var(--temnyy);
+        }
+
+        &:hover {
+            background: var(--svetlo-siniy);
+            box-shadow: inset -12px -12px 10px #03070139;
+        }
+    }
+}
+
+.mapBox {
+    width: 100%;
+    min-height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+        min-height: 400px;
+    }
+
+    @media (max-width: 768px) {
+        min-height: 350px;
+        order: -1; // Карта сверху на мобильных
+    }
+
+    @media (max-width: 480px) {
+        min-height: 280px;
+        border-radius: 8px;
+    }
+
+    iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+        min-height: inherit;
+    }
+}
